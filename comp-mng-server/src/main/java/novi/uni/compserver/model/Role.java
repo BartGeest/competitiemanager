@@ -1,5 +1,6 @@
 package novi.uni.compserver.model;
 
+import novi.uni.compserver.model.enums.RoleName;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
@@ -7,19 +8,20 @@ import javax.persistence.*;
 @Entity
 @Table(name = "roles")
 public class Role {
+
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Enumerated(EnumType.STRING)
     @NaturalId
-    @Column(length = 60)
-    private Rolename rolename;
+    @Column
+    private RoleName rolename;
 
 
     public Role() {
     }
 
-    public Rolename getRolename() {
+    public RoleName getRolename() {
         return rolename;
     }
 }

@@ -23,22 +23,14 @@ public class NoviEmployee {
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "employee_roles",
-            joinColumns = @JoinColumn(name = "employeeId"),
-            inverseJoinColumns = @JoinColumn(name = "roleId"))
-    private Set<Role> roleSet = new HashSet<>();
+            joinColumns = @JoinColumn(name = "fk_employee"),
+            inverseJoinColumns = @JoinColumn(name = "fk_role"))
+    private Set<Role> roles = new HashSet<>();
 
-    @OneToMany(
-            mappedBy = "noviEmployee",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY,
-            orphanRemoval = true)
+    @OneToMany(mappedBy = "owner", orphanRemoval = true)
     private List<Team> teams;
 
-    @OneToMany(
-            mappedBy = "noviEmployee",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY,
-            orphanRemoval = true)
+    @OneToMany(mappedBy = "forecaster", orphanRemoval = true)
     private List<Forecast> forecasts;
 
     private Long points;
@@ -68,11 +60,11 @@ public class NoviEmployee {
     }
 
     public Set<Role> getRoleSet() {
-        return roleSet;
+        return roles;
     }
 
-    public void setRoleSet(Set<Role> roleSet) {
-        this.roleSet = roleSet;
+    public void setRoleSet(Set<Role> roles) {
+        this.roles = roles;
     }
 
     public List<Team> getTeams() {

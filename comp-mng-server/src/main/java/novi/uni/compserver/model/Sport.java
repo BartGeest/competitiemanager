@@ -1,8 +1,8 @@
 package novi.uni.compserver.model;
 
+import org.hibernate.annotations.NaturalId;
+
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import java.util.List;
 
 @Entity
 public class Sport {
@@ -10,21 +10,16 @@ public class Sport {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
-    private String name;
-
-    @OneToMany(
-            mappedBy = "sport",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER,
-            orphanRemoval = true)
-    private List<Competition> competitions;
+    @Enumerated(EnumType.STRING)
+    @NaturalId
+    @Column
+    private String sportname;
 
     public Sport() {
     }
 
-    public Sport(String name) {
-        this.name = name;
+    public Sport(String sportname) {
+        this.sportname = sportname;
     }
 
     public Long getId() {
@@ -32,14 +27,6 @@ public class Sport {
     }
 
     public String getName() {
-        return name;
-    }
-
-    public List<Competition> getCompetitions() {
-        return competitions;
-    }
-
-    public void setCompetitions(List<Competition> competitions) {
-        this.competitions = competitions;
+        return sportname;
     }
 }

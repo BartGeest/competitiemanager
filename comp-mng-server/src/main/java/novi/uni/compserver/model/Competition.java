@@ -17,21 +17,14 @@ public class Competition {
     private Date startsAt;
 
     @ManyToOne
-    @JoinColumn(name = "sport_id")
     private Sport sport;
 
-    @OneToMany(
-            mappedBy = "competition",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY,
-            orphanRemoval = true)
+    @OneToMany //unidirectional
+    @JoinColumn(name = "fk_competition")
     private List<Team> competitors;
 
-    @OneToMany(
-            mappedBy = "competition",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY,
-            orphanRemoval = true)
+    @OneToMany //unidirectional
+    @JoinColumn(name = "fk_competition")
     private List<Match> matches;
 
     public Competition() {
