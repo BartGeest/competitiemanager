@@ -1,5 +1,8 @@
 package novi.uni.compserver.security;
 
+import novi.uni.compserver.model.NoviEmployee;
+import novi.uni.compserver.repositories.NoviEmployeeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -9,22 +12,23 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class NoviEmployeeDetailsService implements UserDetailsService {
 
-    //TODO: Autowire NoviEmployee Repository
+    @Autowired
+    NoviEmployeeRepository noviEmployeeRepository;
 
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        //TODO: NoviEmployee ophalen uit repo op basis van naam o.i.d.
+        NoviEmployee noviEmployee = noviEmployeeRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("Noviwerknemer niet gevonden met gebruikersnaam: " + username));
 
-        //TODO: NoviEmployeePrincipal teruggeven (via create method)
-        return null;
+        return NoviEmployeePrincipal.create(noviEmployee);
     }
 
     @Transactional
     public UserDetails loadWithUserId(Long id) {
-        //TODO: NoviEmployee ophalen uit repo op basis van id
+        NoviEmployee noviEmployee = noviEmployeeRepository.findById(id)
+                .orElseThrow(() -> new UsernameNotFoundException("Geen novi medewerker gevonden met id: " + id));
 
-        //TODO: NoviEmployeePrincipal teruggeven (via create method)
-        return null;
+        return NoviEmployeePrincipal.create(noviEmployee);
     }
 }

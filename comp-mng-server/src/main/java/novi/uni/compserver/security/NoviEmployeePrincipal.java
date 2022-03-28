@@ -3,10 +3,13 @@ package novi.uni.compserver.security;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import novi.uni.compserver.model.NoviEmployee;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class NoviEmployeePrincipal implements UserDetails {
     private Long id;
@@ -26,10 +29,16 @@ public class NoviEmployeePrincipal implements UserDetails {
     }
 
     public static NoviEmployeePrincipal create(NoviEmployee noviEmployee) {
-        //TODO: krijg authorities van user en voeg toe aan nieuwe NoviEmployeePrincipal
 
-        //return new NoviEmployeePrincipal();
-        return null;
+        List<GrantedAuthority> authorities = noviEmployee.getRoleSet().stream().map(role ->
+                new SimpleGrantedAuthority(role.getRolename().name())).collect(Collectors.toList());
+
+        return new NoviEmployeePrincipal(
+                noviEmployee.getId(),
+                noviEmployee.getUsername(),
+                noviEmployee.getPassword(),
+                authorities
+        );
     }
 
     public Long getId() {
