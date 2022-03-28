@@ -1,5 +1,6 @@
 package novi.uni.compserver.model;
 
+import novi.uni.compserver.model.enums.SportName;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
@@ -13,12 +14,12 @@ public class Sport {
     @Enumerated(EnumType.STRING)
     @NaturalId
     @Column
-    private String sportname;
+    private SportName sportname;
 
     public Sport() {
     }
 
-    public Sport(String sportname) {
+    public Sport(SportName sportname) {
         this.sportname = sportname;
     }
 
@@ -26,7 +27,7 @@ public class Sport {
         return id;
     }
 
-    public String getName() {
+    public SportName getName() {
         return sportname;
     }
 }
