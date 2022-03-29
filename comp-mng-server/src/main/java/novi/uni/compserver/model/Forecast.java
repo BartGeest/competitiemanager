@@ -25,6 +25,10 @@ public class Forecast {
     @NaturalId
     private ForecastType forecastType;
 
+    private Long forecastHomePoints;
+
+    private Long forecastAwayPoints;
+
     public Forecast() {
     }
 
@@ -72,5 +76,21 @@ public class Forecast {
 
     public void setForecastType(ForecastType forecastType) {
         this.forecastType = forecastType;
+    }
+
+    public Long getForecastHomePoints() {
+        return forecastHomePoints;
+    }
+
+    public void setForecastHomePoints(Long forecastHomePoints) {
+        this.forecastHomePoints = forecastHomePoints;
+    }
+
+    public Long getForecastAwayPoints() {
+        return forecastAwayPoints;
+    }
+
+    public void setForecastAwayPoints(Long forecastAwayPoints) {
+        this.forecastAwayPoints = forecastAwayPoints;
     }
 }

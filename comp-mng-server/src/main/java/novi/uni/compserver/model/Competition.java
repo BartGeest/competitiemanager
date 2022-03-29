@@ -25,8 +25,7 @@ public class Competition {
     @JoinColumn(name = "fk_competition")
     private List<Team> competitors;
 
-    @OneToMany
-    @JoinColumn(name = "fk_competition")
+    @OneToMany(mappedBy = "competition")
     private List<Match> matches;
 
     private final int maxAllowedTeams = 100;

@@ -1,29 +1,47 @@
 package novi.uni.compserver.controllers;
 
+import novi.uni.compserver.constants.Constants;
+import novi.uni.compserver.payload.requests.ForecastRequest;
+import novi.uni.compserver.payload.responses.ApiResponse;
+import novi.uni.compserver.payload.responses.ForecastResponse;
+import novi.uni.compserver.payload.responses.PagedResponse;
+import novi.uni.compserver.security.CurrentNoviEmployee;
+import novi.uni.compserver.security.NoviEmployeePrincipal;
+import novi.uni.compserver.services.ForecastService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/forecasts")
 public class ForecastController {
 
+    @Autowired
+    ForecastService forecastService;
+
     @PostMapping("/create")
     @PreAuthorize("hasRole('EMPLOYEE')")
-    public ResponseEntity<?> createForecast() {
-        return null; //TODO: methode verder uitwerken
+    public ResponseEntity<?> createForecast(
+            @CurrentNoviEmployee NoviEmployeePrincipal noviEmployeePrincipal,
+            @Valid @RequestBody ForecastRequest forecastRequest) {
+
+        ApiResponse response = forecastService.isForecastCreated(noviEmployeePrincipal, forecastRequest);
+        return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/getAllForecasts") //TODO: miss nog getMapping aanpassen gebasseerd op username in url ding
+    @GetMapping("/getEmployeeForecasts")
     @PreAuthorize("hasRole('EMPLOYEE')")
+    public ResponseEntity<?> getAllEmployeeForecasts(
+            @CurrentNoviEmployee NoviEmployeePrincipal noviEmployeePrincipal,
+            @RequestParam(value = "page", defaultValue = Constants.DEFAULT_PAGE_NUMBER) int page,
+            @RequestParam(value = "size", defaultValue = Constants.DEFAULT_PAGE_SIZE) int size
+            ) {
 
-    public ResponseEntity<?> getAllForecasts() {
-        return null;
-        //TODO: methode verder uitwerken
-        // wat nog moeilijk gaat zijn want je moet niet alleen de forecast ophalen maar ook op welke wedstrijd dat gaat zijn
-        // welke competitie het is, van welke sport
+        PagedResponse<ForecastResponse> response = forecastService.getAllEmployeeForecasts(noviEmployeePrincipal.getId(), page, size);
+
+        return ResponseEntity.ok(response);
     }
 }

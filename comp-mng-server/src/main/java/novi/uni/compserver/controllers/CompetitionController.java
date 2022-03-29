@@ -1,7 +1,7 @@
 package novi.uni.compserver.controllers;
 
 import novi.uni.compserver.constants.Constants;
-import novi.uni.compserver.payload.requests.CompetitionBySportRequest;
+import novi.uni.compserver.model.enums.SportName;
 import novi.uni.compserver.payload.responses.CompetitionResponse;
 import novi.uni.compserver.payload.responses.PagedResponse;
 import novi.uni.compserver.security.CurrentNoviEmployee;
@@ -12,8 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
-
 @RestController
 @RequestMapping("/api/competition")
 public class CompetitionController {
@@ -21,19 +19,17 @@ public class CompetitionController {
     @Autowired
     CompetitionService competitionService;
 
-    @GetMapping("/get_competitions")
+    @GetMapping("/get_competitions/{sportName}")
     @PreAuthorize("hasRole('EMPLOYEE')")
     public ResponseEntity<?> getCompetitions(
             @CurrentNoviEmployee NoviEmployeePrincipal noviEmployeePrincipal,
-            @Valid @RequestBody CompetitionBySportRequest request,
+            @PathVariable SportName sportName,
             @RequestParam(value = "page", defaultValue = Constants.DEFAULT_PAGE_NUMBER) int page,
             @RequestParam(value = "size", defaultValue = Constants.DEFAULT_PAGE_SIZE) int size
             ) {
 
-        PagedResponse<CompetitionResponse> response = competitionService.giveCompetitionsBySport(request.getSportName(), page, size);
+        PagedResponse<CompetitionResponse> response = competitionService.giveCompetitionsBySport(sportName, page, size);
 
         return ResponseEntity.ok(response);
     }
-
-    //TODO: Nog andere methodes? of alleen de namen van competitions terug krijgen?
 }
