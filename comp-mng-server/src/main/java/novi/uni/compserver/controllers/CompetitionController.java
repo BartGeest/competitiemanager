@@ -1,26 +1,38 @@
 package novi.uni.compserver.controllers;
 
+import novi.uni.compserver.constants.Constants;
+import novi.uni.compserver.payload.requests.CompetitionBySportRequest;
+import novi.uni.compserver.payload.responses.CompetitionResponse;
+import novi.uni.compserver.payload.responses.PagedResponse;
 import novi.uni.compserver.security.CurrentNoviEmployee;
 import novi.uni.compserver.security.NoviEmployeePrincipal;
+import novi.uni.compserver.services.CompetitionService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/competition")
 public class CompetitionController {
 
-    //TODO: CompetitionFacade of service aanroepen?
+    @Autowired
+    CompetitionService competitionService;
 
-    @GetMapping("/get_names")
+    @GetMapping("/get_competitions")
     @PreAuthorize("hasRole('EMPLOYEE')")
-    public ResponseEntity<?> getCompetitions(@CurrentNoviEmployee NoviEmployeePrincipal noviEmployeePrincipal) {
+    public ResponseEntity<?> getCompetitions(
+            @CurrentNoviEmployee NoviEmployeePrincipal noviEmployeePrincipal,
+            @Valid @RequestBody CompetitionBySportRequest request,
+            @RequestParam(value = "page", defaultValue = Constants.DEFAULT_PAGE_NUMBER) int page,
+            @RequestParam(value = "size", defaultValue = Constants.DEFAULT_PAGE_SIZE) int size
+            ) {
 
-        //TODO: je wil eigenlijk alleen de namen van de competities terug krijgen op basis van sport!
+        PagedResponse<CompetitionResponse> response = competitionService.giveCompetitionsBySport(request.getSportName(), page, size);
 
-        return null;
+        return ResponseEntity.ok(response);
     }
 
     //TODO: Nog andere methodes? of alleen de namen van competitions terug krijgen?
