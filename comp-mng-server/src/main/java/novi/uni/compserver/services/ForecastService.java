@@ -19,6 +19,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -44,9 +45,11 @@ public class ForecastService {
                 .orElseThrow(() -> new NoviEmployeeNotFoundException("Kan geen Novimedewerker vinden met id: " + noviEmployeePrincipal.getId()));
 
         Forecast forecast = new Forecast(match, currentNoviEmployee, forecastRequest.getForecastType());
+        match.getForecasts().add(forecast);
+        currentNoviEmployee.getForecasts().add(forecast);
         forecastRepository.save(forecast);
 
-        return new ApiResponse(true, "Voorspelling is aangemaakt");
+        return new ApiResponse("Voorspelling is aangemaakt", HttpStatus.OK);
     }
 
     public PagedResponse<ForecastResponse> getAllEmployeeForecasts(Long id, int page, int size) {

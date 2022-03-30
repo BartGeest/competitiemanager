@@ -29,7 +29,7 @@ public class ForecastController {
             @Valid @RequestBody ForecastRequest forecastRequest) {
 
         ApiResponse response = forecastService.isForecastCreated(noviEmployeePrincipal, forecastRequest);
-        return ResponseEntity.ok(response);
+        return new ResponseEntity<>(response.getMessage(), response.getStatus());
     }
 
     @GetMapping("/getEmployeeForecasts")

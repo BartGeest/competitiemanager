@@ -30,6 +30,6 @@ public class TeamController {
 
         ApiResponse response = teamService.isTeamCreated(noviEmployeePrincipal.getId(), teamRequest.getName(), teamRequest.getSportName());
 
-        return ResponseEntity.ok(response);
+        return new ResponseEntity<>(response.getMessage(), response.getStatus());
     }
 }
