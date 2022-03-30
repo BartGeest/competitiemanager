@@ -1,5 +1,7 @@
 package novi.uni.compserver.model;
 
+import novi.uni.compserver.model.enums.SportName;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -9,6 +11,9 @@ public class Team {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Enumerated(EnumType.STRING)
+    private SportName sportName;
 
     @NotBlank
     @Size(max = 36)
@@ -32,9 +37,10 @@ public class Team {
     public Team() {
     }
 
-    public Team(String name, NoviEmployee owner) {
+    public Team(String name, NoviEmployee owner, SportName sportName) {
         this.name = name;
         this.owner = owner;
+        this.sportName = sportName;
     }
 
     public Long getId() {
@@ -91,5 +97,13 @@ public class Team {
 
     public void setCost(Long cost) {
         this.cost = cost;
+    }
+
+    public SportName getSportName() {
+        return sportName;
+    }
+
+    public void setSportName(SportName sportName) {
+        this.sportName = sportName;
     }
 }

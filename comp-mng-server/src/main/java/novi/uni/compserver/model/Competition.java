@@ -1,5 +1,7 @@
 package novi.uni.compserver.model;
 
+import novi.uni.compserver.model.enums.SportName;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
@@ -16,24 +18,25 @@ public class Competition {
 
     private Date startsAt;
 
-    @ManyToOne
-    private Sport sport;
+    @Enumerated(EnumType.STRING)
+    private SportName sportname;
 
-    @OneToMany //unidirectional
+    @OneToMany
     @JoinColumn(name = "fk_competition")
     private List<Team> competitors;
 
-    @OneToMany //unidirectional
-    @JoinColumn(name = "fk_competition")
+    @OneToMany(mappedBy = "competition")
     private List<Match> matches;
+
+    private final int maxAllowedTeams = 100;
 
     public Competition() {
     }
 
-    public Competition(String name, Date startsAt, Sport sport) {
+    public Competition(String name, Date startsAt, SportName sportname) {
         this.name = name;
         this.startsAt = startsAt;
-        this.sport = sport;
+        this.sportname = sportname;
     }
 
     public Long getId() {
@@ -56,12 +59,12 @@ public class Competition {
         this.startsAt = startsAt;
     }
 
-    public Sport getSport() {
-        return sport;
+    public SportName getSportname() {
+        return sportname;
     }
 
-    public void setSport(Sport sport) {
-        this.sport = sport;
+    public void setSportname(SportName sportname) {
+        this.sportname = sportname;
     }
 
     public List<Team> getCompetitors() {
@@ -78,5 +81,9 @@ public class Competition {
 
     public void setMatches(List<Match> matches) {
         this.matches = matches;
+    }
+
+    public int getMaxAllowedTeams() {
+        return maxAllowedTeams;
     }
 }
