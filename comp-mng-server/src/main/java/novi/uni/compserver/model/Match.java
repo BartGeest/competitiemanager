@@ -9,10 +9,6 @@ public class Match {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "fk_competition")
-    private Competition competition;
-
     @OneToOne //unidirectional
     @JoinColumn(name = "home")
     private Team home;
@@ -72,13 +68,5 @@ public class Match {
 
     public void setMatchResult(MatchResult matchResult) {
         this.matchResult = matchResult;
-    }
-
-    public Competition getCompetition() {
-        return competition;
-    }
-
-    public void setCompetition(Competition competition) {
-        this.competition = competition;
     }
 }
