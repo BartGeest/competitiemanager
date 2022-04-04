@@ -1,5 +1,6 @@
 package novi.uni.compserver.security.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -8,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebMvcConfig implements WebMvcConfigurer {
     private final static long MAX_AGE_LIMIT = 3600;
 
-    //TODO: @Value gebruiken met in de application.properties de origin (url)
+    @Value("${app.cors.allowedOrigin}")
     private String allowedOrigin;
 
     @Override
