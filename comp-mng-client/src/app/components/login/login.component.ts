@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "../../services/auth.service";
+import { Router } from '@angular/router';
+import {AuthService} from "../../services/auth/auth.service";
 import {ACCESS_TOKEN} from "../../constants/constants";
 
 @Component({
@@ -17,13 +18,15 @@ export class LoginComponent {
 
   isBadCred: boolean = false;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   onSubmit(): void {
     this.authService.login(this.loginForm.get('username')?.value, this.loginForm.get('password')?.value)
       .subscribe((response) => {
         console.log('response is: ' + response.accessToken);
         //TODO: functionaliteiten na inlog verder uitwerken
+
+        this.router.navigate(['dashboard']);
       })
   }
 

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import { map } from "rxjs";
-import {URL} from "../constants/constants";
-import {ACCESS_TOKEN} from "../constants/constants";
+import {URL} from "../../constants/constants";
+import {ACCESS_TOKEN} from "../../constants/constants";
 
 @Injectable({
   providedIn: 'root'
