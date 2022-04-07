@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  url: {
+    auth: 'http://localhost:8080/api/auth/login',
+    register: 'http://localhost:8080/api/auth/register'
+    //TODO: de andere endpoints toevoegen
+  },
+  path: {
+    home: '',
+    dashboard: 'dashboard'
+    //TODO: de andere client paths toevoegen
+  }
 };
 
 /*
