@@ -11,8 +11,17 @@ export const environment = {
   },
   path: {
     home: '',
-    dashboard: 'dashboard'
-    //TODO: de andere client paths toevoegen
+    dashboard: '/dashboard',
+    competition: '/competitie',
+    teams: '/teams',
+    forecasts: '/voorspellingen',
+    results: '/resultaten',
+    market: '/markt',
+    leaderboard: '/leaderboard',
+    manual: '/speluitleg',
+    change: '/wachtwoord/wijzigen',
+    logout: ''
+    //TODO: de andere client paths toevoegen/aanpassen
   }
 };
 

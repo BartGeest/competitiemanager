@@ -16,4 +16,40 @@ export class PathService {
     return environment.path.dashboard;
   }
 
+  get getCompetitionPath(): string {
+    return environment.path.competition;
+  }
+
+  get getTeamsPath(): string {
+    return environment.path.teams;
+  }
+
+  get getForecastsPath(): string {
+    return environment.path.forecasts;
+  }
+
+  get getResultsPath(): string {
+    return environment.path.results;
+  }
+
+  get getMarketPath(): string {
+    return environment.path.market;
+  }
+
+  get getLeaderboardPath(): string {
+    return environment.path.leaderboard;
+  }
+
+  get getManualPath(): string {
+    return environment.path.manual;
+  }
+
+  get getPassChangePath(): string {
+    return environment.path.change;
+  }
+
+  get getLogoutPath(): string {
+    return environment.path.logout;
+  }
+
 }
