@@ -7,11 +7,14 @@ import { Component, OnInit, Input} from '@angular/core';
 })
 export class DashboardButtonComponent implements OnInit {
 
-  constructor() { }
+  @Input() buttonName: string;
 
-  @Input() buttonName: string | undefined;
+  @Input() navPath: string;
 
-  @Input() navPath: string | undefined;
+  constructor() {
+    this.buttonName = '';
+    this.navPath = '';
+  }
 
   ngOnInit(): void {
   }

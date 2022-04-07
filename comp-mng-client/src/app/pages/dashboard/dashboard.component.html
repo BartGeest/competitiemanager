@@ -1,2 +1,30 @@
-<app-dashboard-button [buttonName]="competitie" [navPath]="competitiepad"></app-dashboard-button>
+<!--TODO: ipv 'gebruiker' de gebruikersnaam van de ingelogde gebruiker -->
+<h1 class="text-center">Welkom gebruiker, waar wil je heen?</h1>
+<div class="clr-row clr-justify-content-center">
+  <div class="clr-col-sm-3">
+    <app-dashboard-button [buttonName]="bl_competitions" [navPath]="competitionsPath"></app-dashboard-button>
+  </div>
+  <div class="clr-col-sm-3">
+    <app-dashboard-button [buttonName]="bl_teams" [navPath]="teamsPath"></app-dashboard-button>
+  </div>
+  <div class="clr-col-sm-3">
+    <app-dashboard-button [buttonName]="bl_forecasts" [navPath]="forecastsPath"></app-dashboard-button>
+  </div>
+  <div class="clr-col-sm-3">
+    <app-dashboard-button [buttonName]="bl_results" [navPath]="resultsPath"></app-dashboard-button>
+  </div>
+  <div class="clr-col-sm-3">
+    <app-dashboard-button [buttonName]="bl_market" [navPath]="marketPath"></app-dashboard-button>
+  </div>
+  <div class="clr-col-sm-3">
+    <app-dashboard-button [buttonName]="bl_leaderboard" [navPath]="leaderboardPath"></app-dashboard-button>
+  </div>
+  <div class="clr-col-sm-3">
+    <app-dashboard-button [buttonName]="bl_manual" [navPath]="manualPath"></app-dashboard-button>
+  </div>
+  <div class="clr-col-sm-3">
+    <app-dashboard-button [buttonName]="bl_changePass" [navPath]="changePassPath"></app-dashboard-button>
+  </div>
+</div>
+
 

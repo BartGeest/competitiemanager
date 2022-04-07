@@ -1,3 +1,6 @@
-<a [routerLink]="navPath">{{buttonName}}</a>
-
-<!--TODO: styling toevoegen aan de <a>, of wellicht een div eromheen-->
+<a [routerLink]="navPath" class="card clickable">
+  <div class="card-block">
+    <h4 class="card-title text-center">{{buttonName}}</h4>
+<!--    <p class="card-text text-center">{{buttonName}}</p>-->
+  </div>
+</a>

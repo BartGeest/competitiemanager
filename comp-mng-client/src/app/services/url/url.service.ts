@@ -12,7 +12,7 @@ export class UrlService {
    * get methodes die een endpoint teruggeeft van de back-end
    */
 
-  get auth(): string {
+  get getAuthUrl(): string {
     return environment.url.auth;
   }
 }
