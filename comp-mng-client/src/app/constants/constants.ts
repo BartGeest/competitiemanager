@@ -10,5 +10,4 @@ export const DASHBOARD = {
   leaderboard: 'Leaderboard',
   manual: 'Speluitleg',
   changePass: 'Wachtwoord wijzigen',
-  logout: 'Uitloggen'
 }

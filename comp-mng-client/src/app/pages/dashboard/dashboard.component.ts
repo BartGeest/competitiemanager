@@ -33,9 +33,6 @@ export class DashboardComponent implements OnInit {
   bl_changePass: string;
   changePassPath: string;
 
-  bl_logout: string;
-  logoutPath: string;
-
   //TODO: admin dingen toevoegen - registreren & verwijderen
 
   constructor(private path: PathService) {
@@ -63,9 +60,6 @@ export class DashboardComponent implements OnInit {
 
     this.bl_changePass = DASHBOARD.changePass;
     this.changePassPath = this.path.getPassChangePath;
-
-    this.bl_logout = DASHBOARD.logout;
-    this.logoutPath = this.path.getLogoutPath;
   }
 
   ngOnInit(): void {
