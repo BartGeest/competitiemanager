@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import { Router } from '@angular/router';
 import {AuthService} from "../../services/auth/auth.service";
-import {ACCESS_TOKEN} from "../../constants/constants";
+import {UrlService} from "../../services/url/url.service";
+import {PathService} from "../../services/path/path.service";
 
 @Component({
   selector: 'app-login',
@@ -18,15 +19,15 @@ export class LoginComponent {
 
   isBadCred: boolean = false;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private path: PathService) { }
 
   onSubmit(): void {
     this.authService.login(this.loginForm.get('username')?.value, this.loginForm.get('password')?.value)
       .subscribe((response) => {
-        console.log('response is: ' + response.accessToken);
+
         //TODO: functionaliteiten na inlog verder uitwerken
 
-        this.router.navigate(['dashboard']);
+        this.router.navigate([this.path.dashboard]);
       })
   }
 
