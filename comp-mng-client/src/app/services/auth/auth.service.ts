@@ -12,7 +12,7 @@ export class AuthService {
   constructor(private http: HttpClient, private url: UrlService) { }
 
   login(username: string, password: string) {
-    return this.http.post<any>(this.url.auth, {username, password});
+    return this.http.post<any>(this.url.getAuthUrl, {username, password});
   }
 
   logout() {

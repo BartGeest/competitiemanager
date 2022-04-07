@@ -4,15 +4,16 @@ import { environment } from "../../../environments/environment";
 @Injectable({
   providedIn: 'root'
 })
-export class UrlService {
+export class PathService {
 
   constructor() { }
 
   /**
-   * get methodes die een endpoint teruggeeft van de back-end
+   * get methodes die een (absolute) client path teruggeeft
    */
 
-  get getAuthUrl(): string {
-    return environment.url.auth;
+  get getDashboardPath(): string {
+    return environment.path.dashboard;
   }
+
 }

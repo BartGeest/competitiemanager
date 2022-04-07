@@ -27,7 +27,7 @@ export class LoginComponent {
 
         //TODO: functionaliteiten na inlog verder uitwerken
 
-        this.router.navigate([this.path.dashboard]);
+        this.router.navigate([this.path.getDashboardPath]);
       })
   }
 
