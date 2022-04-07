@@ -1,6 +1,7 @@
 export const ACCESS_TOKEN: string = 'accessToken';
 
 //TODO: andere constanten toevoegen?
+
 export const DASHBOARD = {
   competition: 'Competities',
   teams: 'Teams',

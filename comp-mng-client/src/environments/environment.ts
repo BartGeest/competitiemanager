@@ -13,7 +13,10 @@ export const environment = {
     home: '',
     dashboard: '/dashboard',
     competition: '/competitie',
-    teams: '/teams',
+    teams: {
+      overview: '/teams',
+      creation: '/aanmaken'
+    },
     forecasts: '/voorspellingen',
     results: '/resultaten',
     market: '/markt',
