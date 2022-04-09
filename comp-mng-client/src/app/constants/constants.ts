@@ -12,3 +12,11 @@ export const DASHBOARD = {
   manual: 'Speluitleg',
   changePass: 'Wachtwoord wijzigen',
 }
+
+export const SPORTS = {
+  football: 'Voetbal',
+  rugby: 'Rugby',
+  basketball: 'Basketbal',
+  baseball: 'Honkbal',
+  volleyball: 'Volleybal'
+}

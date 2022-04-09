@@ -1,19 +1,27 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { ClarityModule } from "@clr/angular";
 import { AppHeaderComponent } from './components/app-header/app-header.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { DashboardButtonComponent } from './components/dashboard-button/dashboard-button.component';
 import { TeamOverviewComponent } from './pages/teams/team-overview/team-overview.component';
 import { TeamCreationComponent } from './pages/teams/team-creation/team-creation.component';
+import { CdsModule } from '@cds/angular';
+import {ClrDropdownModule, ClrInputModule, ClrPasswordModule, ClrSelectModule} from "@clr/angular";
+import {ClarityIcons, plusCircleIcon, angleIcon, minusCircleIcon} from "@cds/core/icon";
+
+ClarityIcons.addIcons(
+  plusCircleIcon,
+  minusCircleIcon,
+  angleIcon
+); //TODO: andere icons toevoegen?
 
 @NgModule({
   declarations: [
@@ -29,7 +37,6 @@ import { TeamCreationComponent } from './pages/teams/team-creation/team-creation
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    ClarityModule,
     RouterModule.forRoot([
       {path: '', component: HomepageComponent},
       {path: 'dashboard', component: DashboardComponent},
@@ -39,7 +46,13 @@ import { TeamCreationComponent } from './pages/teams/team-creation/team-creation
       // ook nog met auth guard
     ]),
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CdsModule,
+    ClrInputModule,
+    ClrPasswordModule,
+    ClrDropdownModule,
+    ClrSelectModule,
+    FormsModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]
