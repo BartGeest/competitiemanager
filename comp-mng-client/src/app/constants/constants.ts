@@ -1,6 +1,7 @@
 export const ACCESS_TOKEN: string = 'accessToken';
 
 //TODO: andere constanten toevoegen?
+
 export const DASHBOARD = {
   competition: 'Competities',
   teams: 'Teams',
@@ -10,4 +11,12 @@ export const DASHBOARD = {
   leaderboard: 'Leaderboard',
   manual: 'Speluitleg',
   changePass: 'Wachtwoord wijzigen',
+}
+
+export const SPORTS = {
+  football: 'Voetbal',
+  rugby: 'Rugby',
+  basketball: 'Basketbal',
+  baseball: 'Honkbal',
+  volleyball: 'Volleybal'
 }

@@ -13,7 +13,10 @@ export const environment = {
     home: '',
     dashboard: '/dashboard',
     competition: '/competitie',
-    teams: '/teams',
+    teams: {
+      overview: '/teams', //de 'eerste' pagina heeft een forward slash nodig, anders kan die hem niet vinden
+      creation: 'aanmaken' //pagina's die relative zijn hebben dat dus juist weer niet nodig....
+    },
     forecasts: '/voorspellingen',
     results: '/resultaten',
     market: '/markt',

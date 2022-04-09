@@ -20,8 +20,12 @@ export class PathService {
     return environment.path.competition;
   }
 
-  get getTeamsPath(): string {
-    return environment.path.teams;
+  get getTeamsOverviewPath(): string {
+    return environment.path.teams.overview;
+  }
+
+  get getTeamsCreationPath(): string {
+    return environment.path.teams.creation;
   }
 
   get getForecastsPath(): string {
