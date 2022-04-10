@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
@@ -16,6 +16,9 @@ import { TeamCreationComponent } from './pages/teams/team-creation/team-creation
 import { CdsModule } from '@cds/angular';
 import {ClrDropdownModule, ClrInputModule, ClrPasswordModule, ClrSelectModule} from "@clr/angular";
 import {ClarityIcons, plusCircleIcon, angleIcon, minusCircleIcon} from "@cds/core/icon";
+import {JwtInterceptor} from "./_helpers/jwt.interceptor";
+import {ErrorInterceptor} from "./_helpers/error.interceptor";
+import {AuthGuard} from "./_helpers/auth.guard";
 
 ClarityIcons.addIcons(
   plusCircleIcon,
@@ -39,9 +42,9 @@ ClarityIcons.addIcons(
     BrowserAnimationsModule,
     RouterModule.forRoot([
       {path: '', component: HomepageComponent},
-      {path: 'dashboard', component: DashboardComponent},
-      {path: 'teams', component: TeamOverviewComponent},
-      {path: 'teams/aanmaken', component: TeamCreationComponent},
+      {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+      {path: 'teams', component: TeamOverviewComponent, canActivate: [AuthGuard]},
+      {path: 'teams/aanmaken', component: TeamCreationComponent, canActivate: [AuthGuard]},
       //TODO: meer paths toevoegen
       // ook nog met auth guard
     ]),
@@ -54,7 +57,11 @@ ClarityIcons.addIcons(
     ClrSelectModule,
     FormsModule
   ],
-  providers: [HttpClientModule],
+  providers: [
+    HttpClientModule,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 
