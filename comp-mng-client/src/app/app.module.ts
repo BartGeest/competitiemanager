@@ -14,11 +14,22 @@ import { DashboardButtonComponent } from './components/dashboard-button/dashboar
 import { TeamOverviewComponent } from './pages/teams/team-overview/team-overview.component';
 import { TeamCreationComponent } from './pages/teams/team-creation/team-creation.component';
 import { CdsModule } from '@cds/angular';
-import {ClrDropdownModule, ClrInputModule, ClrPasswordModule, ClrSelectModule} from "@clr/angular";
+import {
+  ClrDropdownModule,
+  ClrInputModule,
+  ClrPasswordModule,
+  ClrPopoverToggleService,
+  ClrSelectModule,
+  ClrSignpostModule, ClrTabsModule
+} from "@clr/angular";
 import {ClarityIcons, plusCircleIcon, angleIcon, minusCircleIcon} from "@cds/core/icon";
 import {JwtInterceptor} from "./_helpers/jwt.interceptor";
 import {ErrorInterceptor} from "./_helpers/error.interceptor";
 import {AuthGuard} from "./_helpers/auth.guard";
+import { CompetitionOverviewComponent } from './pages/competitions/competition-overview/competition-overview.component';
+import { CompetitionParticipateComponent } from './pages/competitions/competition-participate/competition-participate.component';
+import { SportsTabComponent } from './components/sports-tab/sports-tab.component';
+import { DashboardSignpostComponent } from './components/dashboard-signpost/dashboard-signpost.component';
 
 ClarityIcons.addIcons(
   plusCircleIcon,
@@ -36,6 +47,10 @@ ClarityIcons.addIcons(
     DashboardButtonComponent,
     TeamOverviewComponent,
     TeamCreationComponent,
+    CompetitionOverviewComponent,
+    CompetitionParticipateComponent,
+    SportsTabComponent,
+    DashboardSignpostComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +60,8 @@ ClarityIcons.addIcons(
       {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
       {path: 'teams', component: TeamOverviewComponent, canActivate: [AuthGuard]},
       {path: 'teams/aanmaken', component: TeamCreationComponent, canActivate: [AuthGuard]},
+      {path: 'competities', component: CompetitionOverviewComponent, canActivate: [AuthGuard]},
+      {path: 'competities/meedoen', component: CompetitionParticipateComponent, canActivate: [AuthGuard]},
       //TODO: meer paths toevoegen
       // ook nog met auth guard
     ]),
@@ -55,14 +72,17 @@ ClarityIcons.addIcons(
     ClrPasswordModule,
     ClrDropdownModule,
     ClrSelectModule,
-    FormsModule
+    FormsModule,
+    ClrSignpostModule,
+    ClrTabsModule
   ],
   providers: [
     HttpClientModule,
+    ClrPopoverToggleService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
-
+// @ts-ignore
 export class AppModule { }

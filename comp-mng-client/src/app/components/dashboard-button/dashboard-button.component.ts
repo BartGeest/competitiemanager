@@ -11,12 +11,19 @@ export class DashboardButtonComponent implements OnInit {
 
   @Input() navPath: string;
 
+  showInfo: boolean;
+
   constructor() {
     this.buttonName = '';
     this.navPath = '';
+    this.showInfo = false;
   }
 
   ngOnInit(): void {
+  }
+
+  isHovering(bool: boolean) {
+    this.showInfo = bool;
   }
 
 }
