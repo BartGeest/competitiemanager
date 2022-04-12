@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CompetitionRow} from "../../model/CompetitionRow";
 
 @Component({
   selector: 'app-interactive-table',
@@ -8,33 +7,28 @@ import {CompetitionRow} from "../../model/CompetitionRow";
 })
 export class InteractiveTableComponent implements OnInit {
 
-  @Input() caption: string;
-  @Input() columns: string[];
+  @Input() columns: string[] = [];
 
-  rows: any[];
+  @Input()
+  rows: any[] = [];
+
+  @Input() isRowClickable: boolean = false;
 
   objectValues = Object.values;
 
-  //even ter test,
-  test1: CompetitionRow = new CompetitionRow(1, 'kaas', 10, 100, new Date());
-  test2: CompetitionRow = new CompetitionRow(1, 'kaas', 10, 100, new Date());
-  test3: CompetitionRow = new CompetitionRow(1, 'kaas', 10, 100, new Date());
-  test4: CompetitionRow = new CompetitionRow(1, 'kaas', 10, 100, new Date());
-  test5: CompetitionRow = new CompetitionRow(1, 'kaas', 10, 100, new Date());
+  constructor() { }
 
-  constructor() {
-    this.caption = 'placeholder caption';
-    this.columns = ['id', 'name', 'contenders', 'max', 'time'];
-    this.rows = [];
-    this.rows.push(this.test1, this.test2, this.test3, this.test4, this.test5);
-  }
+  ngOnInit(): void { }
 
-  ngOnInit(): void {
-  }
+  clickedRow() { //TODO: wtf moet je meegeven...?
+    //TODO: functie 'activeren' op basis van boolean?
+    // Event Emitter om te zeggen dat er is geklikt?
+    // Dat je bijvoorbeeld naar een nieuwe page navigate met de data van de row?
+    // Maar er zullen pagina's zijn waarbij clicken op een row niks hoort te doen, dan is het alleen een overzicht...
 
-  clickedRow(id: number) {
-    console.log(id);
-    console.log('HEHFSENFKESNF');
+    //TODO: bespreken met iemand wat een goede aanpak zal zijn
+    // - een knop meegeven met daarin de 'actie' die uitgevoerd moet worden wanneer je de generieke component in html zet
+    // - altijd de row clickable maken en op basis van whatever wel of niet iets doen
   }
 
 }

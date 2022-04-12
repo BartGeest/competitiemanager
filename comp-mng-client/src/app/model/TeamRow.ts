@@ -2,7 +2,7 @@ export class TeamRow {
   id: number;
   owner: string;
   name: string;
-  sport: string;
+  sport?: string;
   competition?: string;
   wonMatches?: number;
   tieMatches?: number;
@@ -12,13 +12,13 @@ export class TeamRow {
   constructor(id: number,
               owner: string,
               name: string,
-              sport: string,
+              sport?: string,
               competition?: string,
               wonMatches?: number,
               tieMatches?: number,
               lostMatches?: number,
               price?: number) {
-    
+
     this.id = id;
     this.owner = owner;
     this.name = name;

@@ -23,4 +23,6 @@ export class SportsTabComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //TODO: wanneer de sport is gewijzigd (click) dan event uitgooien (EventEmitter?)
+
 }
