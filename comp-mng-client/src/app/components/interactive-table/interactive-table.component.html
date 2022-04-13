@@ -1,7 +1,6 @@
-<clr-datagrid [clrDgRowSelection]="true">
-  <clr-dg-column class="text-center" *ngFor="let column of columns">{{column}}</clr-dg-column>
-  <!-- TODO: miss iets anders meegeven bij click? hangt van de parent af? -->
-  <clr-dg-row (click)="clickedRow()" *ngFor="let row of rows">
+<clr-datagrid>
+  <clr-dg-column *ngFor="let column of columns">{{column}}</clr-dg-column>
+  <clr-dg-row *clrDgItems="let row of rows" [clrDgItem]="row" (click)="clickedRow(row)">
     <clr-dg-cell *ngFor="let value of objectValues(row)">{{value}}</clr-dg-cell>
   </clr-dg-row>
 </clr-datagrid>

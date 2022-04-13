@@ -8,10 +8,19 @@ import {TeamRow} from "../../../model/TeamRow";
 })
 export class CompetitionParticipateComponent implements OnInit {
 
+  team_columns: string[] = [
+    'id',
+    'eigenaar',
+    'naam',
+    'gewonnen',
+    'gelijk',
+    'verloren'
+  ];
+
   ph_teams: TeamRow[] = [
-    new TeamRow(1, 'jemoeder', 'team-jemoeder'),
-    new TeamRow(2, 'watmoetje', 'dikkehardekaas'),
-    new TeamRow(3, 'ikhouvanmannen', 'pijpfestijn69')
+    new TeamRow(1, 'jemoeder', 'team-jemoeder', 1, 1, 5),
+    new TeamRow(2, 'watmoetje', 'dikkehardekaas', 3, 3, 2),
+    new TeamRow(3, 'ikhouvanmannen', 'pijpfestijn69', 7,0,1)
   ];
 
   constructor() { }

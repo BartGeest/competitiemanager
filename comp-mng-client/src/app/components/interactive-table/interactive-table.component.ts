@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-interactive-table',
@@ -7,12 +7,15 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class InteractiveTableComponent implements OnInit {
 
-  @Input() columns: string[] = [];
+  @Input()
+  columns: string[] = [];
 
   @Input()
   rows: any[] = [];
 
   @Input() isRowClickable: boolean = false;
+
+  @Output() eventEmitter = new EventEmitter<void>();
 
   objectValues = Object.values;
 
@@ -20,15 +23,12 @@ export class InteractiveTableComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  clickedRow() { //TODO: wtf moet je meegeven...?
-    //TODO: functie 'activeren' op basis van boolean?
-    // Event Emitter om te zeggen dat er is geklikt?
-    // Dat je bijvoorbeeld naar een nieuwe page navigate met de data van de row?
-    // Maar er zullen pagina's zijn waarbij clicken op een row niks hoort te doen, dan is het alleen een overzicht...
+  clickedRow(row?: any) {
 
-    //TODO: bespreken met iemand wat een goede aanpak zal zijn
-    // - een knop meegeven met daarin de 'actie' die uitgevoerd moet worden wanneer je de generieke component in html zet
-    // - altijd de row clickable maken en op basis van whatever wel of niet iets doen
+    if (this.isRowClickable) {
+      //TODO: row data meegeven (nodig voor back-end call om data op te halen in volgende scherm?)
+      this.eventEmitter.emit();
+    }
   }
 
 }
