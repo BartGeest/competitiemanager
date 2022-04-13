@@ -1,0 +1,13 @@
+<!--TODO: HOE KRIJG IK DIT VOOR ANDERE ELEMENTEN???-->
+<clr-signpost (mouseenter)="isHovering(true)" (mouseleave)="isHovering(false)">
+  <clr-signpost-content *clrIfOpen="showInfo">
+<!--    TODO: waardes hieronder wijzigen naar @Input dingen-->
+    <p class="card-text">Hier kan je alle opkomende competities bekijken</p>
+    <p class="card-text">Maar je kan ook meedoen</p>
+    <ul class="list">
+      <li>Een sport te kiezen</li>
+      <li>Een competitie te kiezen</li>
+      <li>En daaraan je teams toe te voegen</li>
+    </ul>
+  </clr-signpost-content>
+</clr-signpost>

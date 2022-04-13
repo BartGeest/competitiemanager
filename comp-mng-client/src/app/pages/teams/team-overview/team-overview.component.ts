@@ -16,7 +16,6 @@ export class TeamOverviewComponent implements OnInit {
   }
 
   navToTeamCreation(): void {
-    console.log(this.route);
     this.router.navigate([this.path.getTeamsCreationPath], {relativeTo: this.route});
   }
 

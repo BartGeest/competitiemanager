@@ -1,6 +1,7 @@
 package novi.uni.compserver.model;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -23,6 +24,8 @@ public class Match {
 
     @OneToMany(mappedBy = "match") //bidirectional
     private List<Forecast> forecasts;
+
+    private Date startTime;
 
     @OneToOne
     @JoinTable(name = "played_match",
@@ -80,5 +83,13 @@ public class Match {
 
     public void setCompetition(Competition competition) {
         this.competition = competition;
+    }
+
+    public Date getStartsTime() {
+        return startTime;
+    }
+
+    public void setStartsTime(Date startTime) {
+        this.startTime = startTime;
     }
 }

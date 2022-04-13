@@ -9,15 +9,19 @@ export class PathService {
   constructor() { }
 
   /**
-   * get methodes die een (absolute) client path teruggeeft
+   * get methodes die een client path teruggeeft
    */
 
   get getDashboardPath(): string {
     return environment.path.dashboard;
   }
 
-  get getCompetitionPath(): string {
-    return environment.path.competition;
+  get getCompetitionOverviewPath(): string {
+    return environment.path.competition.overview;
+  }
+
+  get getCompetitionParticipationPath(): string {
+    return environment.path.competition.participate;
   }
 
   get getTeamsOverviewPath(): string {

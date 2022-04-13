@@ -1,0 +1,5 @@
+<h1 class="text-center">Overzicht Competities</h1>
+<div class="divide-height-small"></div>
+<app-sports-tab></app-sports-tab>
+<div class="divide-height-small"></div>
+<app-interactive-table (eventEmitter)="navToCompParticipate()" [isRowClickable]="true" [columns]="comp_columns" [rows]="ph_comps"></app-interactive-table>

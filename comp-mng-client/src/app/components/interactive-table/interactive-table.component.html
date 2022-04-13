@@ -1,0 +1,6 @@
+<clr-datagrid>
+  <clr-dg-column *ngFor="let column of columns">{{column}}</clr-dg-column>
+  <clr-dg-row *ngFor="let row of rows" (click)="clickedRow(row)">
+    <clr-dg-cell *ngFor="let value of objectValues(row)">{{value}}</clr-dg-cell>
+  </clr-dg-row>
+</clr-datagrid>

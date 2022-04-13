@@ -10,23 +10,23 @@ import {User} from "../../model/User";
 })
 export class AuthService {
 
-  private currentUserSubject: BehaviorSubject<User>;
-  public currentUser: Observable<User>;
+  private currentUserSubject: BehaviorSubject<string>;
+  public currentUser: Observable<string>;
 
   constructor(private http: HttpClient, private url: UrlService) {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(sessionStorage.getItem(ACCESS_TOKEN) || '{}'));
+    this.currentUserSubject = new BehaviorSubject<string>(localStorage.getItem(ACCESS_TOKEN) || '{}');
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
   login(username: string, password: string) {
     return this.http.post<any>(this.url.getAuthUrl, {username, password})
       .pipe(map(user => {
-        sessionStorage.setItem(ACCESS_TOKEN, user)
+        localStorage.setItem(ACCESS_TOKEN, user)
         this.currentUserSubject.next(user)
       }));
   }
 
-  get getCurrentUser(): User {
+  get getCurrentUser(): string {
     return this.currentUserSubject.value;
   }
 

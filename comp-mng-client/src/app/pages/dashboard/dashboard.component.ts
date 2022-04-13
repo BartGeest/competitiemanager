@@ -38,7 +38,7 @@ export class DashboardComponent implements OnInit {
   constructor(private path: PathService) {
 
     this.bl_competitions = DASHBOARD.competition;
-    this.competitionsPath = this.path.getCompetitionPath;
+    this.competitionsPath = this.path.getCompetitionOverviewPath;
 
     this.bl_teams = DASHBOARD.teams;
     this.teamsPath = this.path.getTeamsOverviewPath;

@@ -12,7 +12,10 @@ export const environment = {
   path: {
     home: '',
     dashboard: '/dashboard',
-    competition: '/competitie',
+    competition: {
+      overview: '/competities',
+      participate: 'meedoen'
+    },
     teams: {
       overview: '/teams', //de 'eerste' pagina heeft een forward slash nodig, anders kan die hem niet vinden
       creation: 'aanmaken' //pagina's die relative zijn hebben dat dus juist weer niet nodig....
