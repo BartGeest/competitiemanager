@@ -32,6 +32,9 @@ export class CompetitionOverviewComponent implements OnInit {
   }
 
   navToCompParticipate(): void {
+    //TODO: andere methode aanroepen wanneer er een row is geklikt (dus vanuit de emit in interactive table)
+    // methode zorgt voor een popup met de vraag of je het zeker weet of je aan deze competitie mee wilt doen
+    // vanuit de popup (modal; zie clarity site) de navigate aanroepen,
     this.router.navigate([this.path.getCompetitionParticipationPath], {relativeTo: this.route});
   }
 
