@@ -12,6 +12,8 @@ export class PathService {
    * get methodes die een client path teruggeeft
    */
 
+  //TODO: methodes toevoegen voor nieuwe paths
+
   get getDashboardPath(): string {
     return environment.path.dashboard;
   }

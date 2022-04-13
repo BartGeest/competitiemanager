@@ -32,6 +32,7 @@ import { CompetitionParticipateComponent } from './pages/competitions/competitio
 import { SportsTabComponent } from './components/sports-tab/sports-tab.component';
 import { DashboardSignpostComponent } from './components/dashboard-signpost/dashboard-signpost.component';
 import { InteractiveTableComponent } from './components/interactive-table/interactive-table.component';
+import { ForecastSelectionComponent } from './pages/forecast-selection/forecast-selection.component';
 
 ClarityIcons.addIcons(
   plusCircleIcon,
@@ -54,6 +55,7 @@ ClarityIcons.addIcons(
     SportsTabComponent,
     DashboardSignpostComponent,
     InteractiveTableComponent,
+    ForecastSelectionComponent,
   ],
     imports: [
         BrowserModule,
