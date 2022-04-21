@@ -1,0 +1,12 @@
+<clr-modal [(clrModalOpen)]="openModal">
+  <h3 class="modal-title">Modal Title</h3>
+  <div class="modal-body">
+    <p>Modal text</p>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="onModalClick()">Close</button>
+    <button type="button" class="btn btn-primary" (click)="onModalClick()">Action</button>
+  </div>
+
+</clr-modal>

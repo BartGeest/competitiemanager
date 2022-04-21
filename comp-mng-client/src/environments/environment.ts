@@ -20,7 +20,10 @@ export const environment = {
       overview: '/teams', //de 'eerste' pagina heeft een forward slash nodig, anders kan die hem niet vinden
       creation: 'aanmaken' //pagina's die relative zijn hebben dat dus juist weer niet nodig....
     },
-    forecasts: '/voorspellingen', //TODO: paths toevoegen
+    forecasts: {
+      overview: '/voorspellingen',
+      creation: 'doen'
+    },
     results: '/resultaten',
     market: '/markt',
     leaderboard: '/leaderboard',

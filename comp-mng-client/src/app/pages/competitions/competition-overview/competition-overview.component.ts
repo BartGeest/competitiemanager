@@ -12,10 +12,10 @@ export class CompetitionOverviewComponent implements OnInit {
 
   comp_columns: string[] = [
     'id',
-    'name',
-    'contenders',
-    'pool-size',
-    'starts in'
+    'naam',
+    '# deelnemers',
+    'limiet deelnemers',
+    'begint over'
   ];
 
   //placeholder data

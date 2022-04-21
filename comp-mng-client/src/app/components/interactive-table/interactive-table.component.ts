@@ -7,11 +7,9 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class InteractiveTableComponent implements OnInit {
 
-  @Input()
-  columns: string[] = [];
+  @Input() columns: string[] = [];
 
-  @Input()
-  rows: any[] = [];
+  @Input() rows: any[] = [];
 
   @Input() isRowClickable: boolean = false;
 
