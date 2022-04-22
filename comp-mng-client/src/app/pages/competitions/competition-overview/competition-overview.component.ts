@@ -42,7 +42,11 @@ export class CompetitionOverviewComponent implements OnInit {
 
   onRowClick(): void {
     console.log('je moeder');
+    this.toggleRowClicked();
+  }
 
+  toggleRowClicked(): void {
+    this.isRowClicked = !this.isRowClicked;
   }
 
 }
