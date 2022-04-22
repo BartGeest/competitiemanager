@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ForecastRow} from "../../../model/ForecastRow";
 import {SPORTS} from "../../../constants/constants";
+import {ActivatedRoute, Router} from "@angular/router";
+import {PathService} from "../../../services/path/path.service";
 
 @Component({
   selector: 'app-forecast-overview',
@@ -11,6 +13,7 @@ export class ForecastOverviewComponent implements OnInit {
 
   isRowClicked: boolean = false
 
+  //TODO: verplaatsen naar constants
   row_headers: string[] = [
     'Sport',
     'Competitie',
@@ -20,21 +23,25 @@ export class ForecastOverviewComponent implements OnInit {
     'Voorspelling'
   ];
 
-  //placeholder data
+  //TODO: later vervangen met echte data van back-end
   ph_forecasts: ForecastRow[] = [
     new ForecastRow(SPORTS.football, 'divisie 1', 'team jantje', 'team kees', new Date(), 'fulltime'),
     new ForecastRow(SPORTS.rugby, 'divisie 12', 'team Gurt', 'team Kaas', new Date(), 'under/over'),
     new ForecastRow(SPORTS.baseball, 'divisie 69', 'team Slaan', 'team Homerun', new Date(), 'correct score')
   ]
 
-  constructor() { }
+  constructor(private router: Router, private route: ActivatedRoute, private path: PathService) { }
 
   ngOnInit(): void {
   }
 
   randoMethod() {
-    console.log('inside randoMethod -_-');
+    //TODO: nog de methode anders noemen en iets anders doen dan alleen dit?
     this.isRowClicked = !this.isRowClicked;
+  }
+
+  navToForecastCreation() {
+    this.router.navigate([this.path.getForecastCreationPath], {relativeTo: this.route});
   }
 
 }

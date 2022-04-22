@@ -1,1 +1,12 @@
-<p>forecast-creation works!</p>
+<h1 class="text-center">Voorspelling maken</h1>
+<div class="divide-height-small"></div>
+<app-interactive-table
+  (eventEmitter)="onRowClick()"
+  [isRowClickable]="true"
+  [columns]="row_headers"
+  [rows]="ph_upcoming_matches">
+</app-interactive-table>
+<app-pop-up
+  (modalEvent)="onRowClick()"
+  [openModal]="isRowClicked">
+</app-pop-up>

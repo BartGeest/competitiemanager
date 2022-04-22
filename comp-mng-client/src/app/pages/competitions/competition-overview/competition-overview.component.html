@@ -3,8 +3,12 @@
 <app-sports-tab></app-sports-tab>
 <div class="divide-height-small"></div>
 <app-interactive-table
-  (eventEmitter)="navToCompParticipate()"
+  (eventEmitter)="onRowClick()"
   [isRowClickable]="true"
   [columns]="comp_columns"
   [rows]="ph_comps">
 </app-interactive-table>
+<app-pop-up
+  (modalEvent)="navToCompParticipate()"
+  [openModal]="isRowClicked">
+</app-pop-up>

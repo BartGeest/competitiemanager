@@ -18,6 +18,8 @@ export class CompetitionOverviewComponent implements OnInit {
     'begint over'
   ];
 
+  isRowClicked: boolean = false;
+
   //placeholder data
   ph_comps: CompetitionRow[] = [
     new CompetitionRow(1, 'jemoeder', 69, 100, new Date()),
@@ -36,6 +38,11 @@ export class CompetitionOverviewComponent implements OnInit {
     // methode zorgt voor een popup met de vraag of je het zeker weet of je aan deze competitie mee wilt doen
     // vanuit de popup (modal; zie clarity site) de navigate aanroepen,
     this.router.navigate([this.path.getCompetitionParticipationPath], {relativeTo: this.route});
+  }
+
+  onRowClick(): void {
+    console.log('je moeder');
+
   }
 
 }
