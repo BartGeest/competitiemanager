@@ -35,6 +35,8 @@ import { InteractiveTableComponent } from './components/interactive-table/intera
 import { ForecastOverviewComponent } from './pages/forecast/forecast-overview/forecast-overview.component';
 import { ForecastCreationComponent } from './pages/forecast/forecast-creation/forecast-creation.component';
 import { PopUpComponent } from './components/pop-up/pop-up.component';
+import { ResultsCompSelectionComponent } from './pages/results/results-comp-selection/results-comp-selection.component';
+import { ResultsMatchOverviewComponent } from './pages/results/results-match-overview/results-match-overview.component';
 
 ClarityIcons.addIcons(
   plusCircleIcon,
@@ -60,19 +62,23 @@ ClarityIcons.addIcons(
     ForecastOverviewComponent,
     ForecastCreationComponent,
     PopUpComponent,
+    ResultsCompSelectionComponent,
+    ResultsMatchOverviewComponent,
   ],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
         RouterModule.forRoot([
-            {path: '', component: HomepageComponent},
-            {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
-            {path: 'teams', component: TeamOverviewComponent, canActivate: [AuthGuard]},
-            {path: 'teams/aanmaken', component: TeamCreationComponent, canActivate: [AuthGuard]},
-            {path: 'competities', component: CompetitionOverviewComponent, canActivate: [AuthGuard]},
-            {path: 'competities/meedoen', component: CompetitionParticipateComponent, canActivate: [AuthGuard]},
-            {path: 'voorspellingen', component: ForecastOverviewComponent, canActivate: [AuthGuard]},
-            {path: 'voorspellingen/doen', component: ForecastCreationComponent, canActivate: [AuthGuard]},
+          {path: '', component: HomepageComponent},
+          {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+          {path: 'teams', component: TeamOverviewComponent, canActivate: [AuthGuard]},
+          {path: 'teams/aanmaken', component: TeamCreationComponent, canActivate: [AuthGuard]},
+          {path: 'competities', component: CompetitionOverviewComponent, canActivate: [AuthGuard]},
+          {path: 'competities/meedoen', component: CompetitionParticipateComponent, canActivate: [AuthGuard]},
+          {path: 'voorspellingen', component: ForecastOverviewComponent, canActivate: [AuthGuard]},
+          {path: 'voorspellingen/doen', component: ForecastCreationComponent, canActivate: [AuthGuard]},
+          {path: 'resultaten', component: ResultsCompSelectionComponent, canActivate: [AuthGuard]},
+          {path: 'resultaten/wedstrijden', component: ResultsMatchOverviewComponent, canActivate: [AuthGuard]},
             //TODO: meer paths toevoegen
         ]),
         ReactiveFormsModule,
