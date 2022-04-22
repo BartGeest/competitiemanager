@@ -12,11 +12,13 @@ export class CompetitionOverviewComponent implements OnInit {
 
   comp_columns: string[] = [
     'id',
-    'name',
-    'contenders',
-    'pool-size',
-    'starts in'
+    'naam',
+    '# deelnemers',
+    'limiet deelnemers',
+    'begint over'
   ];
+
+  isRowClicked: boolean = false;
 
   //placeholder data
   ph_comps: CompetitionRow[] = [
@@ -36,6 +38,11 @@ export class CompetitionOverviewComponent implements OnInit {
     // methode zorgt voor een popup met de vraag of je het zeker weet of je aan deze competitie mee wilt doen
     // vanuit de popup (modal; zie clarity site) de navigate aanroepen,
     this.router.navigate([this.path.getCompetitionParticipationPath], {relativeTo: this.route});
+  }
+
+  onRowClick(): void {
+    console.log('je moeder');
+
   }
 
 }

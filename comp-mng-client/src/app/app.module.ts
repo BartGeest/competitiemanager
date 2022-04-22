@@ -17,7 +17,7 @@ import { CdsModule } from '@cds/angular';
 import {
     ClrDatagridModule,
     ClrDropdownModule,
-    ClrInputModule,
+    ClrInputModule, ClrModalModule,
     ClrPasswordModule,
     ClrPopoverToggleService,
     ClrSelectModule,
@@ -32,6 +32,9 @@ import { CompetitionParticipateComponent } from './pages/competitions/competitio
 import { SportsTabComponent } from './components/sports-tab/sports-tab.component';
 import { DashboardSignpostComponent } from './components/dashboard-signpost/dashboard-signpost.component';
 import { InteractiveTableComponent } from './components/interactive-table/interactive-table.component';
+import { ForecastOverviewComponent } from './pages/forecast/forecast-overview/forecast-overview.component';
+import { ForecastCreationComponent } from './pages/forecast/forecast-creation/forecast-creation.component';
+import { PopUpComponent } from './components/pop-up/pop-up.component';
 
 ClarityIcons.addIcons(
   plusCircleIcon,
@@ -54,6 +57,9 @@ ClarityIcons.addIcons(
     SportsTabComponent,
     DashboardSignpostComponent,
     InteractiveTableComponent,
+    ForecastOverviewComponent,
+    ForecastCreationComponent,
+    PopUpComponent,
   ],
     imports: [
         BrowserModule,
@@ -65,8 +71,9 @@ ClarityIcons.addIcons(
             {path: 'teams/aanmaken', component: TeamCreationComponent, canActivate: [AuthGuard]},
             {path: 'competities', component: CompetitionOverviewComponent, canActivate: [AuthGuard]},
             {path: 'competities/meedoen', component: CompetitionParticipateComponent, canActivate: [AuthGuard]},
+            {path: 'voorspellingen', component: ForecastOverviewComponent, canActivate: [AuthGuard]},
+            {path: 'voorspellingen/doen', component: ForecastCreationComponent, canActivate: [AuthGuard]},
             //TODO: meer paths toevoegen
-            // ook nog met auth guard
         ]),
         ReactiveFormsModule,
         HttpClientModule,
@@ -78,7 +85,8 @@ ClarityIcons.addIcons(
         FormsModule,
         ClrSignpostModule,
         ClrTabsModule,
-        ClrDatagridModule
+        ClrDatagridModule,
+        ClrModalModule
     ],
   providers: [
     HttpClientModule,

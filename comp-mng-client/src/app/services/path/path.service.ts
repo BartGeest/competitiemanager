@@ -12,6 +12,8 @@ export class PathService {
    * get methodes die een client path teruggeeft
    */
 
+  //TODO: methodes toevoegen voor nieuwe paths
+
   get getDashboardPath(): string {
     return environment.path.dashboard;
   }
@@ -32,8 +34,12 @@ export class PathService {
     return environment.path.teams.creation;
   }
 
-  get getForecastsPath(): string {
-    return environment.path.forecasts;
+  get getForecastOverviewPath(): string {
+    return environment.path.forecasts.overview;
+  }
+
+  get getForecastCreationPath(): string {
+    return environment.path.forecasts.creation;
   }
 
   get getResultsPath(): string {
