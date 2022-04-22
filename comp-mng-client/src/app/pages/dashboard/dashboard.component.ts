@@ -47,7 +47,7 @@ export class DashboardComponent implements OnInit {
     this.forecastsPath = this.path.getForecastOverviewPath;
 
     this.bl_results = DASHBOARD.results;
-    this.resultsPath = this.path.getResultsPath;
+    this.resultsPath = this.path.getResultsSelectionPath;
 
     this.bl_market = DASHBOARD.market;
     this.marketPath = this.path.getMarketPath;

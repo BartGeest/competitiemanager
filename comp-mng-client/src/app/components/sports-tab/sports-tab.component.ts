@@ -24,5 +24,6 @@ export class SportsTabComponent implements OnInit {
   }
 
   //TODO: wanneer de sport is gewijzigd (click) dan event uitgooien (EventEmitter?)
+  // dit ten behoeve van calls naar de back-end om de goede data op te halen
 
 }

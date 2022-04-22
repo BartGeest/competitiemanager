@@ -24,7 +24,10 @@ export const environment = {
       overview: '/voorspellingen',
       creation: 'doen'
     },
-    results: '/resultaten',
+    results: {
+      selection: '/resultaten',
+      matches: 'wedstrijden'
+    },
     market: '/markt',
     leaderboard: '/leaderboard',
     manual: '/speluitleg',

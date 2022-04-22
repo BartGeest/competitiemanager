@@ -42,8 +42,12 @@ export class PathService {
     return environment.path.forecasts.creation;
   }
 
-  get getResultsPath(): string {
-    return environment.path.results;
+  get getResultsSelectionPath(): string {
+    return environment.path.results.selection;
+  }
+
+  get getMatchResultsPath(): string {
+    return environment.path.results.matches;
   }
 
   get getMarketPath(): string {
