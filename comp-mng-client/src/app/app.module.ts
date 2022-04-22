@@ -37,6 +37,8 @@ import { ForecastCreationComponent } from './pages/forecast/forecast-creation/fo
 import { PopUpComponent } from './components/pop-up/pop-up.component';
 import { ResultsCompSelectionComponent } from './pages/results/results-comp-selection/results-comp-selection.component';
 import { ResultsMatchOverviewComponent } from './pages/results/results-match-overview/results-match-overview.component';
+import { MarketOverviewComponent } from './pages/market/market-overview/market-overview.component';
+import { TradeCreationComponent } from './pages/market/trade-creation/trade-creation.component';
 
 ClarityIcons.addIcons(
   plusCircleIcon,
@@ -64,6 +66,8 @@ ClarityIcons.addIcons(
     PopUpComponent,
     ResultsCompSelectionComponent,
     ResultsMatchOverviewComponent,
+    MarketOverviewComponent,
+    TradeCreationComponent,
   ],
     imports: [
         BrowserModule,
@@ -79,6 +83,8 @@ ClarityIcons.addIcons(
           {path: 'voorspellingen/doen', component: ForecastCreationComponent, canActivate: [AuthGuard]},
           {path: 'resultaten', component: ResultsCompSelectionComponent, canActivate: [AuthGuard]},
           {path: 'resultaten/wedstrijden', component: ResultsMatchOverviewComponent, canActivate: [AuthGuard]},
+          {path: 'markt', component: MarketOverviewComponent, canActivate: [AuthGuard]},
+          {path: 'markt/aanbieden', component: TradeCreationComponent, canActivate: [AuthGuard]},
             //TODO: meer paths toevoegen
         ]),
         ReactiveFormsModule,

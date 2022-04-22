@@ -1,0 +1,13 @@
+<h1 class="text-center">Team aanbieden</h1>
+<div class="divide-height-small"></div>
+<app-interactive-table
+  (eventEmitter)="onRowClick()"
+  [isRowClickable]="true"
+  [columns]="team_columns"
+  [rows]="ph_team_offer">
+</app-interactive-table>
+<app-pop-up
+  (modalEvent)="onRowClick()"
+  [openModal]="isRowClicked">
+</app-pop-up>
+

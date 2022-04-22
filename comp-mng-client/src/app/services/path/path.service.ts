@@ -50,8 +50,12 @@ export class PathService {
     return environment.path.results.matches;
   }
 
-  get getMarketPath(): string {
-    return environment.path.market;
+  get getMarketOverviewPath(): string {
+    return environment.path.market.overview;
+  }
+
+  get getOfferCreationPath(): string {
+    return environment.path.market.offer;
   }
 
   get getLeaderboardPath(): string {

@@ -28,7 +28,10 @@ export const environment = {
       selection: '/resultaten',
       matches: 'wedstrijden'
     },
-    market: '/markt',
+    market: {
+      overview: '/markt',
+      offer: 'aanbieden'
+    },
     leaderboard: '/leaderboard',
     manual: '/speluitleg',
     change: '/wachtwoord/wijzigen',
