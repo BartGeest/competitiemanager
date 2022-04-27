@@ -33,7 +33,13 @@ export const environment = {
       offer: 'aanbieden'
     },
     leaderboard: '/leaderboard',
-    manual: '/speluitleg',
+    manual: {
+      overview: '/speluitleg',
+      competition: 'competities',
+      teams: 'teams',
+      forecast: 'voorspellen',
+      market: 'markt'
+    },
     change: '/wachtwoord/wijzigen',
     logout: ''
     //TODO: de andere client paths toevoegen/aanpassen

@@ -62,8 +62,24 @@ export class PathService {
     return environment.path.leaderboard;
   }
 
-  get getManualPath(): string {
-    return environment.path.manual;
+  get getManualOverviewPath(): string {
+    return environment.path.manual.overview;
+  }
+
+  get getManualCompetitionsPath(): string {
+    return environment.path.manual.competition;
+  }
+
+  get getManualTeamsPath(): string {
+    return environment.path.manual.teams;
+  }
+
+  get getManualForecastPath(): string {
+    return environment.path.manual.forecast;
+  }
+
+  get getManualMarketPath(): string {
+    return environment.path.manual.market;
   }
 
   get getPassChangePath(): string {

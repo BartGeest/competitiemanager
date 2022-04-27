@@ -56,7 +56,7 @@ export class DashboardComponent implements OnInit {
     this.leaderboardPath = this.path.getLeaderboardPath;
 
     this.bl_manual = DASHBOARD.manual;
-    this.manualPath = this.path.getManualPath;
+    this.manualPath = this.path.getManualOverviewPath;
 
     this.bl_changePass = DASHBOARD.changePass;
     this.changePassPath = this.path.getPassChangePath;

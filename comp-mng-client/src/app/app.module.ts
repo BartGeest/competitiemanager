@@ -40,6 +40,11 @@ import { ResultsMatchOverviewComponent } from './pages/results/results-match-ove
 import { MarketOverviewComponent } from './pages/market/market-overview/market-overview.component';
 import { TradeCreationComponent } from './pages/market/trade-creation/trade-creation.component';
 import { LeaderboardComponent } from './pages/leaderboard/leaderboard.component';
+import { ManualOverviewComponent } from './pages/manual/manual-overview/manual-overview.component';
+import { ManualCompeteComponent } from './pages/manual/manual-compete/manual-compete.component';
+import { ManualTeamsComponent } from './pages/manual/manual-teams/manual-teams.component';
+import { ManualForecastComponent } from './pages/manual/manual-forecast/manual-forecast.component';
+import { ManualMarketComponent } from './pages/manual/manual-market/manual-market.component';
 
 ClarityIcons.addIcons(
   plusCircleIcon,
@@ -70,6 +75,11 @@ ClarityIcons.addIcons(
     MarketOverviewComponent,
     TradeCreationComponent,
     LeaderboardComponent,
+    ManualOverviewComponent,
+    ManualCompeteComponent,
+    ManualTeamsComponent,
+    ManualForecastComponent,
+    ManualMarketComponent,
   ],
     imports: [
         BrowserModule,
@@ -87,7 +97,12 @@ ClarityIcons.addIcons(
           {path: 'resultaten/wedstrijden', component: ResultsMatchOverviewComponent, canActivate: [AuthGuard]},
           {path: 'markt', component: MarketOverviewComponent, canActivate: [AuthGuard]},
           {path: 'markt/aanbieden', component: TradeCreationComponent, canActivate: [AuthGuard]},
-          {path: 'leaderboard', component: LeaderboardComponent, canActivate: [AuthGuard]}
+          {path: 'leaderboard', component: LeaderboardComponent, canActivate: [AuthGuard]},
+          {path: 'speluitleg', component: ManualOverviewComponent, canActivate: [AuthGuard]},
+          {path: 'speluitleg/competities', component: ManualCompeteComponent, canActivate: [AuthGuard]},
+          {path: 'speluitleg/teams', component: ManualTeamsComponent, canActivate: [AuthGuard]},
+          {path: 'speluitleg/voorspellen', component: ManualForecastComponent, canActivate: [AuthGuard]},
+          {path: 'speluitleg/markt', component: ManualMarketComponent, canActivate: [AuthGuard]}
             //TODO: meer paths toevoegen
         ]),
         ReactiveFormsModule,
