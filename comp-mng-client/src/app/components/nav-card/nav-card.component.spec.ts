@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DashboardButtonComponent } from './dashboard-button.component';
+import { NavCardComponent } from './nav-card.component';
 
-describe('DashboardButtonComponent', () => {
-  let component: DashboardButtonComponent;
-  let fixture: ComponentFixture<DashboardButtonComponent>;
+describe('NavCardComponent', () => {
+  let component: NavCardComponent;
+  let fixture: ComponentFixture<NavCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DashboardButtonComponent ]
+      declarations: [ NavCardComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DashboardButtonComponent);
+    fixture = TestBed.createComponent(NavCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

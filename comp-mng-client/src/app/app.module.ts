@@ -10,7 +10,6 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppHeaderComponent } from './components/app-header/app-header.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { DashboardButtonComponent } from './components/dashboard-button/dashboard-button.component';
 import { TeamOverviewComponent } from './pages/teams/team-overview/team-overview.component';
 import { TeamCreationComponent } from './pages/teams/team-creation/team-creation.component';
 import { CdsModule } from '@cds/angular';
@@ -30,7 +29,6 @@ import {AuthGuard} from "./_helpers/auth.guard";
 import { CompetitionOverviewComponent } from './pages/competitions/competition-overview/competition-overview.component';
 import { CompetitionParticipateComponent } from './pages/competitions/competition-participate/competition-participate.component';
 import { SportsTabComponent } from './components/sports-tab/sports-tab.component';
-import { DashboardSignpostComponent } from './components/dashboard-signpost/dashboard-signpost.component';
 import { InteractiveTableComponent } from './components/interactive-table/interactive-table.component';
 import { ForecastOverviewComponent } from './pages/forecast/forecast-overview/forecast-overview.component';
 import { ForecastCreationComponent } from './pages/forecast/forecast-creation/forecast-creation.component';
@@ -45,6 +43,7 @@ import { ManualCompeteComponent } from './pages/manual/manual-compete/manual-com
 import { ManualTeamsComponent } from './pages/manual/manual-teams/manual-teams.component';
 import { ManualForecastComponent } from './pages/manual/manual-forecast/manual-forecast.component';
 import { ManualMarketComponent } from './pages/manual/manual-market/manual-market.component';
+import { NavCardComponent } from './components/nav-card/nav-card.component';
 
 ClarityIcons.addIcons(
   plusCircleIcon,
@@ -59,13 +58,11 @@ ClarityIcons.addIcons(
     AppHeaderComponent,
     LoginComponent,
     DashboardComponent,
-    DashboardButtonComponent,
     TeamOverviewComponent,
     TeamCreationComponent,
     CompetitionOverviewComponent,
     CompetitionParticipateComponent,
     SportsTabComponent,
-    DashboardSignpostComponent,
     InteractiveTableComponent,
     ForecastOverviewComponent,
     ForecastCreationComponent,
@@ -80,6 +77,7 @@ ClarityIcons.addIcons(
     ManualTeamsComponent,
     ManualForecastComponent,
     ManualMarketComponent,
+    NavCardComponent,
   ],
     imports: [
         BrowserModule,
