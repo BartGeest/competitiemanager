@@ -23,6 +23,7 @@ export const TITLES = {
   },
 
   manual: {
+    general: 'Algemeen',
     competition: 'Competitie-uitleg',
     teams: 'Teams-uitleg',
     forecast: 'Voorspellingen-uitleg',
@@ -42,9 +43,10 @@ export const TEXTS = {
     changePass: 'wijzig je wachtwoord hier.'
   },
   manual: {
+    general: 'Speel voor winst! Krijg de beste teams!',
     competition: 'Hoe ze werken en hoe jij aan ze mee kan doen.',
-    teams: 'Het aanmaken, beheren en nog wat andere leukigheden.',
-    forecast: 'Welke soorten er zijn en hoe je ze maakt.',
-    market: 'Kopen, verkopen, ruilen, het kan allemaal.'
+    teams: 'Het aanmaken van teams en hoe ze werken.',
+    forecast: 'Welke soorten er zijn en hoe je een voorspelling doet.',
+    market: 'Kopen, verkopen, ruilen, het kan allemaal!'
   }
 }

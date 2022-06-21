@@ -66,6 +66,10 @@ export class PathService {
     return environment.path.manual.overview;
   }
 
+  get getManualGeneralPath(): string {
+    return environment.path.manual.general;
+  }
+
   get getManualCompetitionsPath(): string {
     return environment.path.manual.competition;
   }

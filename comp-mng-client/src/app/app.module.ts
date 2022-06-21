@@ -44,6 +44,7 @@ import { ManualTeamsComponent } from './pages/manual/manual-teams/manual-teams.c
 import { ManualForecastComponent } from './pages/manual/manual-forecast/manual-forecast.component';
 import { ManualMarketComponent } from './pages/manual/manual-market/manual-market.component';
 import { NavCardComponent } from './components/nav-card/nav-card.component';
+import { ManualGeneralComponent } from './pages/manual/manual-general/manual-general.component';
 
 ClarityIcons.addIcons(
   plusCircleIcon,
@@ -78,6 +79,7 @@ ClarityIcons.addIcons(
     ManualForecastComponent,
     ManualMarketComponent,
     NavCardComponent,
+    ManualGeneralComponent,
   ],
     imports: [
         BrowserModule,
@@ -97,6 +99,7 @@ ClarityIcons.addIcons(
           {path: 'markt/aanbieden', component: TradeCreationComponent, canActivate: [AuthGuard]},
           {path: 'leaderboard', component: LeaderboardComponent, canActivate: [AuthGuard]},
           {path: 'speluitleg', component: ManualOverviewComponent, canActivate: [AuthGuard]},
+          {path: 'speluitleg/algemeen', component: ManualGeneralComponent, canActivate: [AuthGuard]},
           {path: 'speluitleg/competities', component: ManualCompeteComponent, canActivate: [AuthGuard]},
           {path: 'speluitleg/teams', component: ManualTeamsComponent, canActivate: [AuthGuard]},
           {path: 'speluitleg/voorspellen', component: ManualForecastComponent, canActivate: [AuthGuard]},

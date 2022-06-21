@@ -1,6 +1,13 @@
 <h1 class="text-center">Waar wil je uitleg over?</h1>
 
 <app-nav-card
+  [cardTitle]="ct_general"
+  [cardText]="ctxt_general"
+  [navPath]="m_generalPath"
+  [isRelativePath]="true">
+</app-nav-card>
+
+<app-nav-card
   [cardTitle]="ct_competition"
   [cardText]="ctxt_competition"
   [navPath]="m_competionPath"

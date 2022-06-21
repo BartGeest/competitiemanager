@@ -35,6 +35,7 @@ export const environment = {
     leaderboard: '/leaderboard',
     manual: {
       overview: '/speluitleg',
+      general: 'algemeen',
       competition: 'competities',
       teams: 'teams',
       forecast: 'voorspellen',
