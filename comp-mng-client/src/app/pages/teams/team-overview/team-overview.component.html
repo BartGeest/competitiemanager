@@ -1,21 +1,13 @@
 <h1 class="text-center">Team overzicht</h1>
+<div class="divide-height-small"></div>
+<app-sports-tab></app-sports-tab>
+<div class="divide-height-small"></div>
 
-<table class="table">
-  <caption>
-    Jouw Teams
-  </caption>
-  <thead>
-    <tr>
-      <th>Naam</th>
-      <th>Sport</th>
-      <th>Competitie</th>
-      <th>Gewonnen</th>
-      <th>Gelijk</th>
-      <th>Verloren</th>
-    </tr>
-  </thead>
-<!--  TODO: tbody met ngFor om de data te loopen en in de table te pleuren-->
-</table>
+<app-interactive-table
+  [isRowClickable]="false"
+  [columns]="team_columns"
+  [rows]="ph_teams">
+</app-interactive-table>
 
 <button class="btn btn-link" (click)="navToTeamCreation()">Teams aanmaken</button>
 

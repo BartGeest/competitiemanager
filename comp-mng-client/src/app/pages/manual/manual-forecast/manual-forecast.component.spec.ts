@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DashboardSignpostComponent } from './dashboard-signpost.component';
+import { ManualForecastComponent } from './manual-forecast.component';
 
-describe('DashboardSignpostComponent', () => {
-  let component: DashboardSignpostComponent;
-  let fixture: ComponentFixture<DashboardSignpostComponent>;
+describe('ManualForecastComponent', () => {
+  let component: ManualForecastComponent;
+  let fixture: ComponentFixture<ManualForecastComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DashboardSignpostComponent ]
+      declarations: [ ManualForecastComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DashboardSignpostComponent);
+    fixture = TestBed.createComponent(ManualForecastComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

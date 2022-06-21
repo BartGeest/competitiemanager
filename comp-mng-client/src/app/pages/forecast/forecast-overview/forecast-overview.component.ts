@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {ForecastRow} from "../../../model/ForecastRow";
-import {SPORTS} from "../../../constants/constants";
 import {ActivatedRoute, Router} from "@angular/router";
 import {PathService} from "../../../services/path/path.service";
 
@@ -25,9 +24,9 @@ export class ForecastOverviewComponent implements OnInit {
 
   //TODO: later vervangen met echte data van back-end
   ph_forecasts: ForecastRow[] = [
-    new ForecastRow(SPORTS.football, 'divisie 1', 'team jantje', 'team kees', new Date(), 'fulltime'),
-    new ForecastRow(SPORTS.rugby, 'divisie 12', 'team Gurt', 'team Kaas', new Date(), 'under/over'),
-    new ForecastRow(SPORTS.baseball, 'divisie 69', 'team Slaan', 'team Homerun', new Date(), 'correct score')
+    new ForecastRow('Voetbal', 'divisie 1', 'team jantje', 'team kees', new Date(), 'fulltime'),
+    new ForecastRow('Rugby', 'divisie 12', 'team Gurt', 'team Kaas', new Date(), 'under/over'),
+    new ForecastRow('Honkbal', 'divisie 69', 'team Slaan', 'team Homerun', new Date(), 'correct score')
   ]
 
   constructor(private router: Router, private route: ActivatedRoute, private path: PathService) { }

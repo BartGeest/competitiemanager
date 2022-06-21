@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {SPORTS} from "../../constants/constants";
+import {TITLES} from "../../constants/constants";
 
 @Component({
   selector: 'app-sports-tab',
@@ -12,11 +12,11 @@ export class SportsTabComponent implements OnInit {
 
   constructor() {
     this.sport_names = [
-      SPORTS.football,
-      SPORTS.rugby,
-      SPORTS.basketball,
-      SPORTS.baseball,
-      SPORTS.volleyball
+      TITLES.sports.football,
+      TITLES.sports.rugby,
+      TITLES.sports.basketball,
+      TITLES.sports.baseball,
+      TITLES.sports.volleyball
     ];
   }
 

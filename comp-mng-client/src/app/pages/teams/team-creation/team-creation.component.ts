@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormArray, FormControl, FormGroup, FormBuilder} from "@angular/forms";
-import {SPORTS} from "../../../constants/constants";
+import {TITLES} from "../../../constants/constants";
 
 @Component({
   selector: 'app-team-creation',
@@ -14,11 +14,11 @@ export class TeamCreationComponent implements OnInit {
 
   constructor() {
     this.dropdownChoices = [
-      SPORTS.football,
-      SPORTS.rugby,
-      SPORTS.basketball,
-      SPORTS.baseball,
-      SPORTS.volleyball
+      TITLES.sports.football,
+      TITLES.sports.rugby,
+      TITLES.sports.basketball,
+      TITLES.sports.baseball,
+      TITLES.sports.volleyball
     ];
 
     this.creationForm = new FormGroup({

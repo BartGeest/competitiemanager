@@ -2,28 +2,68 @@
 <h1 class="text-center">Welkom gebruiker, waar wil je heen?</h1>
 <div class="clr-row clr-justify-content-center">
   <div class="clr-col-sm-3">
-    <app-dashboard-button [buttonName]="bl_competitions" [navPath]="competitionsPath"></app-dashboard-button>
+    <app-nav-card
+      [cardTitle]="bl_competitions"
+      [cardText]="bt_competitions"
+      [navPath]="competitionsPath"
+      [isRelativePath]="false">
+    </app-nav-card>
   </div>
   <div class="clr-col-sm-3">
-    <app-dashboard-button [buttonName]="bl_teams" [navPath]="teamsPath"></app-dashboard-button>
+    <app-nav-card
+      [cardTitle]="bl_teams"
+      [cardText]="bt_teams"
+      [navPath]="teamsPath"
+      [isRelativePath]="false">
+    </app-nav-card>
   </div>
   <div class="clr-col-sm-3">
-    <app-dashboard-button [buttonName]="bl_forecasts" [navPath]="forecastsPath"></app-dashboard-button>
+    <app-nav-card
+      [cardTitle]="bl_forecasts"
+      [cardText]="bt_forecasts"
+      [navPath]="forecastsPath"
+      [isRelativePath]="false">
+    </app-nav-card>
   </div>
   <div class="clr-col-sm-3">
-    <app-dashboard-button [buttonName]="bl_results" [navPath]="resultsPath"></app-dashboard-button>
+    <app-nav-card
+      [cardTitle]="bl_results"
+      [cardText]="bt_results"
+      [navPath]="resultsPath"
+      [isRelativePath]="false">
+    </app-nav-card>
   </div>
   <div class="clr-col-sm-3">
-    <app-dashboard-button [buttonName]="bl_market" [navPath]="marketPath"></app-dashboard-button>
+    <app-nav-card
+      [cardTitle]="bl_market"
+      [cardText]="bt_market"
+      [navPath]="marketPath"
+      [isRelativePath]="false">
+    </app-nav-card>
   </div>
   <div class="clr-col-sm-3">
-    <app-dashboard-button [buttonName]="bl_leaderboard" [navPath]="leaderboardPath"></app-dashboard-button>
+    <app-nav-card
+      [cardTitle]="bl_leaderboard"
+      [cardText]="bt_leaderboard"
+      [navPath]="leaderboardPath"
+      [isRelativePath]="false">
+    </app-nav-card>
   </div>
   <div class="clr-col-sm-3">
-    <app-dashboard-button [buttonName]="bl_manual" [navPath]="manualPath"></app-dashboard-button>
+    <app-nav-card
+      [cardTitle]="bl_manual"
+      [cardText]="bt_manual"
+      [navPath]="manualPath"
+      [isRelativePath]="false">
+    </app-nav-card>
   </div>
   <div class="clr-col-sm-3">
-    <app-dashboard-button [buttonName]="bl_changePass" [navPath]="changePassPath"></app-dashboard-button>
+    <app-nav-card
+      [cardTitle]="bl_changePass"
+      [cardText]="bt_changePass"
+      [navPath]="changePassPath"
+      [isRelativePath]="false">
+    </app-nav-card>
   </div>
 </div>
 
