@@ -25,6 +25,7 @@ public class Match {
     @OneToMany(mappedBy = "match") //bidirectional
     private List<Forecast> forecasts;
 
+    @Temporal(TemporalType.TIMESTAMP)
     private Date startTime;
 
     @OneToOne

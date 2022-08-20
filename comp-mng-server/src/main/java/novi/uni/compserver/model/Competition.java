@@ -16,7 +16,11 @@ public class Competition {
     @NotBlank
     private String name;
 
+    @Temporal(TemporalType.TIMESTAMP)
     private Date startsAt;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date finishedAt;
 
     @Enumerated(EnumType.STRING)
     private SportName sportname;
@@ -28,14 +32,13 @@ public class Competition {
     @OneToMany(mappedBy = "competition")
     private List<Match> matches;
 
-    private final int maxAllowedTeams = 100;
+    private static final int maxAllowedTeams = 100;
 
     public Competition() {
     }
 
-    public Competition(String name, Date startsAt, SportName sportname) {
+    public Competition(String name, SportName sportname) {
         this.name = name;
-        this.startsAt = startsAt;
         this.sportname = sportname;
     }
 
