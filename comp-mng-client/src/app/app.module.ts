@@ -9,7 +9,7 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppHeaderComponent } from './components/app-header/app-header.component';
 import { LoginComponent } from './components/login/login.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { UserDashboardComponent } from './pages/dashboard/user-dashboard/user-dashboard.component';
 import { TeamOverviewComponent } from './pages/teams/team-overview/team-overview.component';
 import { TeamCreationComponent } from './pages/teams/team-creation/team-creation.component';
 import { CdsModule } from '@cds/angular';
@@ -45,6 +45,7 @@ import { ManualForecastComponent } from './pages/manual/manual-forecast/manual-f
 import { ManualMarketComponent } from './pages/manual/manual-market/manual-market.component';
 import { NavCardComponent } from './components/nav-card/nav-card.component';
 import { ManualGeneralComponent } from './pages/manual/manual-general/manual-general.component';
+import { AdminDashboardComponent } from './pages/dashboard/admin-dashboard/admin-dashboard.component';
 
 ClarityIcons.addIcons(
   plusCircleIcon,
@@ -58,7 +59,7 @@ ClarityIcons.addIcons(
     HomepageComponent,
     AppHeaderComponent,
     LoginComponent,
-    DashboardComponent,
+    UserDashboardComponent,
     TeamOverviewComponent,
     TeamCreationComponent,
     CompetitionOverviewComponent,
@@ -80,13 +81,15 @@ ClarityIcons.addIcons(
     ManualMarketComponent,
     NavCardComponent,
     ManualGeneralComponent,
+    AdminDashboardComponent,
   ],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
         RouterModule.forRoot([
           {path: '', component: HomepageComponent},
-          {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+          {path: 'user-dashboard', component: UserDashboardComponent, canActivate: [AuthGuard]},
+          {path: 'admin-dashboard', component: AdminDashboardComponent, canActivate: [AuthGuard]},
           {path: 'teams', component: TeamOverviewComponent, canActivate: [AuthGuard]},
           {path: 'teams/aanmaken', component: TeamCreationComponent, canActivate: [AuthGuard]},
           {path: 'competities', component: CompetitionOverviewComponent, canActivate: [AuthGuard]},

@@ -12,10 +12,12 @@ export class PathService {
    * get methodes die een client path teruggeeft
    */
 
-  //TODO: methodes toevoegen voor nieuwe paths
+  get getUserDashboardPath(): string {
+    return environment.path.dashboard.user;
+  }
 
-  get getDashboardPath(): string {
-    return environment.path.dashboard;
+  get getAdminDashBoardPath(): string {
+    return environment.path.dashboard.admin;
   }
 
   get getCompetitionOverviewPath(): string {
@@ -88,6 +90,14 @@ export class PathService {
 
   get getPassChangePath(): string {
     return environment.path.change;
+  }
+
+  get getRegisterPath(): string {
+    return environment.path.register;
+  }
+
+  get getDeletePath(): string {
+    return environment.path.delete;
   }
 
   get getLogoutPath(): string {

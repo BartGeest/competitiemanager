@@ -1,0 +1,27 @@
+<h1 class="text-center">Welkom admin, wat wil je doen?</h1>
+<div class="clr-row clr-justify-content-center">
+  <div class="clr-col-sm-3">
+    <app-nav-card
+      [cardTitle]="bl_startComp"
+      [cardText]="bt_startComp"
+      [navPath]="startCompPath"
+      [isRelativePath]="false">
+    </app-nav-card>
+  </div>
+  <div class="clr-col-sm-3">
+    <app-nav-card
+      [cardTitle]="bl_register"
+      [cardText]="bt_register"
+      [navPath]="registerPath"
+      [isRelativePath]="false">
+    </app-nav-card>
+  </div>
+  <div class="clr-col-sm-3">
+    <app-nav-card
+      [cardTitle]="bl_delete"
+      [cardText]="bt_delete"
+      [navPath]="deletePath"
+      [isRelativePath]="false">
+    </app-nav-card>
+  </div>
+</div>

@@ -11,7 +11,10 @@ export const environment = {
   },
   path: {
     home: '',
-    dashboard: '/dashboard',
+    dashboard: {
+      user: 'user-dashboard',
+      admin: 'admin-dashboard',
+    },
     competition: {
       overview: '/competities',
       participate: 'meedoen'
@@ -42,6 +45,8 @@ export const environment = {
       market: 'markt'
     },
     change: '/wachtwoord/wijzigen',
+    register: '/registreren',
+    delete: '/verwijderen',
     logout: ''
     //TODO: de andere client paths toevoegen/aanpassen
   }

@@ -20,7 +20,7 @@ export class CompetitionOverviewComponent implements OnInit {
 
   isRowClicked: boolean = false;
 
-  //placeholder data
+  // TODO dit vervangen met een call naar de back-end
   ph_comps: CompetitionRow[] = [
     new CompetitionRow(1, 'jemoeder', 69, 100, new Date()),
     new CompetitionRow(2, 'jevader', 42, 100, new Date()),
@@ -41,7 +41,6 @@ export class CompetitionOverviewComponent implements OnInit {
   }
 
   onRowClick(): void {
-    console.log('je moeder');
     this.toggleRowClicked();
   }
 

@@ -32,7 +32,7 @@ export class ResultsMatchOverviewComponent implements OnInit {
   }
 
   onBtnClick(): void {
-    this.router.navigate([this.path.getDashboardPath]);
+    this.router.navigate([this.path.getUserDashboardPath]);
   }
 
 }

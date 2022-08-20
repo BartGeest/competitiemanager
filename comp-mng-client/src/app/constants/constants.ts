@@ -1,17 +1,22 @@
 export const ACCESS_TOKEN: string = 'accessToken';
 
-//TODO: andere constanten toevoegen?
-
 export const TITLES = {
   dashboard: {
-    competitions: 'Competities',
-    teams: 'Teams',
-    forecasts: 'Voorspellingen',
-    results: 'Competitieresultaten',
-    market: 'Markt',
-    leaderboard: 'Leaderboard',
-    manual: 'Speluitleg',
-    changePass: 'Wachtwoord wijzigen',
+    user: {
+      competitions: 'Competities',
+      teams: 'Teams',
+      forecasts: 'Voorspellingen',
+      results: 'Competitieresultaten',
+      market: 'Markt',
+      leaderboard: 'Leaderboard',
+      manual: 'Speluitleg',
+      changePass: 'Wachtwoord wijzigen',
+    },
+    admin: {
+      compStart: 'Start Competitie',
+      createUser: 'Registreren',
+      deleteUser: 'Verwijderen',
+    },
   },
 
   sports: {
@@ -33,14 +38,21 @@ export const TITLES = {
 
 export const TEXTS = {
   dashboard: {
-    competitions: 'Doe hier mee aan competities.',
-    teams: 'Heb je nog geen teams? Klik dan hier.',
-    forecasts: 'Maak een voorspelling op een wedstrijd.',
-    results: 'Zie hier hoe de competities zijn gegaan.',
-    market: 'Koop, ruil en verkoop teams hier.',
-    leaderboard: 'Kijk wie het het beste doet.',
-    manual: 'Leer hoe alles hier werkt.',
-    changePass: 'wijzig je wachtwoord hier.'
+    user: {
+      competitions: 'Doe hier mee aan competities.',
+      teams: 'Heb je nog geen teams? Klik dan hier.',
+      forecasts: 'Maak een voorspelling op een wedstrijd.',
+      results: 'Zie hier hoe de competities zijn gegaan.',
+      market: 'Koop, ruil en verkoop teams hier.',
+      leaderboard: 'Kijk wie het het beste doet.',
+      manual: 'Leer hoe alles hier werkt.',
+      changePass: 'wijzig je wachtwoord hier.'
+    },
+    admin: {
+      compStart: 'Start competities en deel wedstrijden in',
+      createUser: 'Maak een nieuwe gebruiker aan',
+      deleteUser: 'Verwijder een gebruiker',
+    },
   },
   manual: {
     general: 'Speel voor winst! Krijg de beste teams!',
