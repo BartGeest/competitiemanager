@@ -13,6 +13,11 @@ export class AuthGuard implements CanActivate {
 
     const currentUser = this.auth.getCurrentUser;
     if (currentUser) {
+      if (route.data['role'] && route.data['role'][0] !== currentUser.roles[0]){
+        // TODO: navigate of een alert oid doen dat je er niet heen kan gaan want je hebt de juiste rollen niet
+        return false;
+      }
+
       return true;
     }
 
