@@ -2,6 +2,9 @@ package novi.uni.compserver.controllers;
 
 import novi.uni.compserver.constants.Constants;
 import novi.uni.compserver.model.enums.SportName;
+import novi.uni.compserver.payload.requests.CompetitionClosingRequest;
+import novi.uni.compserver.payload.requests.CompetitionCreationRequest;
+import novi.uni.compserver.payload.responses.ApiResponse;
 import novi.uni.compserver.payload.responses.CompetitionResponse;
 import novi.uni.compserver.payload.responses.PagedResponse;
 import novi.uni.compserver.security.CurrentNoviEmployee;
@@ -11,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/competition")
@@ -31,5 +36,27 @@ public class CompetitionController {
         PagedResponse<CompetitionResponse> response = competitionService.giveCompetitionsBySport(sportName, page, size);
 
         return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/create")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> postCompetition(
+            @CurrentNoviEmployee NoviEmployeePrincipal noviEmployeePrincipal,
+            @Valid @RequestBody CompetitionCreationRequest competitionCreationRequest) {
+
+        ApiResponse apiResponse = competitionService.createCompetition(competitionCreationRequest);
+
+        return ResponseEntity.ok(apiResponse);
+    }
+
+    @PostMapping("/close")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> closeCompetition(
+            @CurrentNoviEmployee NoviEmployeePrincipal noviEmployeePrincipal,
+            @Valid @RequestBody CompetitionClosingRequest competitionClosingRequest) {
+
+        ApiResponse apiResponse = competitionService.closeCompetition();
+
+        return ResponseEntity.ok(apiResponse);
     }
 }

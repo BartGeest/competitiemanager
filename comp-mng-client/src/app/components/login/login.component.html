@@ -13,7 +13,7 @@
 
       <clr-password-container>
         <label class="clr-sr-only">Wachtwoord</label>
-        <input type="password" name="password" clrPassword placeholder="wachtwoord" formControlName="password"/>
+        <input type="password" name="password" autocomplete="off" clrPassword placeholder="wachtwoord" formControlName="password"/>
       </clr-password-container>
 
       <div *ngIf="isBadCred" class="error active">

@@ -6,8 +6,6 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class NavigationService {
 
-  constructor() { }
-
   navToPage(isRelative: boolean, router: Router, route: ActivatedRoute, path: string): void {
     isRelative ?
       router.navigate([path], {relativeTo: route}) :
