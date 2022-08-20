@@ -22,13 +22,17 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router, private path: PathService) { }
 
   onSubmit(): void {
-    this.authService.login(this.loginForm.get('username')?.value, this.loginForm.get('password')?.value)
-      .subscribe((response) => {
+    this.authService.login(
+      this.loginForm.get('username')?.value,
+      this.loginForm.get('password')?.value)
+        .subscribe((user) => {
 
-        //TODO: functionaliteiten na inlog verder uitwerken
-
-        this.router.navigate([this.path.getDashboardPath]);
-      })
+          if (user.roles[0] === 'ROLE_EMPLOYEE') {
+            this.router.navigate([this.path.getUserDashboardPath]);
+          } else if (user.roles[0] === 'ROLE_ADMIN') {
+            this.router.navigate([this.path.getAdminDashBoardPath]);
+          }
+        })
   }
 
 }
