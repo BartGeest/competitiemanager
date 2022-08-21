@@ -46,6 +46,7 @@ import { ManualMarketComponent } from './pages/manual/manual-market/manual-marke
 import { NavCardComponent } from './components/nav-card/nav-card.component';
 import { ManualGeneralComponent } from './pages/manual/manual-general/manual-general.component';
 import { AdminDashboardComponent } from './pages/dashboard/admin-dashboard/admin-dashboard.component';
+import {Roles} from "./model/Roles";
 
 ClarityIcons.addIcons(
   plusCircleIcon,
@@ -88,25 +89,25 @@ ClarityIcons.addIcons(
         BrowserAnimationsModule,
         RouterModule.forRoot([
           {path: '', component: HomepageComponent},
-          {path: 'user-dashboard', component: UserDashboardComponent, canActivate: [AuthGuard]},
-          {path: 'admin-dashboard', component: AdminDashboardComponent, canActivate: [AuthGuard]},
-          {path: 'teams', component: TeamOverviewComponent, canActivate: [AuthGuard]},
-          {path: 'teams/aanmaken', component: TeamCreationComponent, canActivate: [AuthGuard]},
-          {path: 'competities', component: CompetitionOverviewComponent, canActivate: [AuthGuard]},
-          {path: 'competities/meedoen', component: CompetitionParticipateComponent, canActivate: [AuthGuard]},
-          {path: 'voorspellingen', component: ForecastOverviewComponent, canActivate: [AuthGuard]},
-          {path: 'voorspellingen/doen', component: ForecastCreationComponent, canActivate: [AuthGuard]},
-          {path: 'resultaten', component: ResultsCompSelectionComponent, canActivate: [AuthGuard]},
-          {path: 'resultaten/wedstrijden', component: ResultsMatchOverviewComponent, canActivate: [AuthGuard]},
-          {path: 'markt', component: MarketOverviewComponent, canActivate: [AuthGuard]},
-          {path: 'markt/aanbieden', component: TradeCreationComponent, canActivate: [AuthGuard]},
-          {path: 'leaderboard', component: LeaderboardComponent, canActivate: [AuthGuard]},
-          {path: 'speluitleg', component: ManualOverviewComponent, canActivate: [AuthGuard]},
-          {path: 'speluitleg/algemeen', component: ManualGeneralComponent, canActivate: [AuthGuard]},
-          {path: 'speluitleg/competities', component: ManualCompeteComponent, canActivate: [AuthGuard]},
-          {path: 'speluitleg/teams', component: ManualTeamsComponent, canActivate: [AuthGuard]},
-          {path: 'speluitleg/voorspellen', component: ManualForecastComponent, canActivate: [AuthGuard]},
-          {path: 'speluitleg/markt', component: ManualMarketComponent, canActivate: [AuthGuard]}
+          {path: 'user-dashboard', component: UserDashboardComponent, canActivate: [AuthGuard], data: {role: [Roles.User]}},
+          {path: 'admin-dashboard', component: AdminDashboardComponent, canActivate: [AuthGuard], data: {role: [Roles.Admin]}},
+          {path: 'teams', component: TeamOverviewComponent, canActivate: [AuthGuard], data: {role: [Roles.User]}},
+          {path: 'teams/aanmaken', component: TeamCreationComponent, canActivate: [AuthGuard], data: {role: [Roles.User]}},
+          {path: 'competities', component: CompetitionOverviewComponent, canActivate: [AuthGuard], data: {role: [Roles.User]}},
+          {path: 'competities/meedoen', component: CompetitionParticipateComponent, canActivate: [AuthGuard], data: {role: [Roles.User]}},
+          {path: 'voorspellingen', component: ForecastOverviewComponent, canActivate: [AuthGuard], data: {role: [Roles.User]}},
+          {path: 'voorspellingen/doen', component: ForecastCreationComponent, canActivate: [AuthGuard], data: {role: [Roles.User]}},
+          {path: 'resultaten', component: ResultsCompSelectionComponent, canActivate: [AuthGuard], data: {role: [Roles.User]}},
+          {path: 'resultaten/wedstrijden', component: ResultsMatchOverviewComponent, canActivate: [AuthGuard], data: {role: [Roles.User]}},
+          {path: 'markt', component: MarketOverviewComponent, canActivate: [AuthGuard], data: {role: [Roles.User]}},
+          {path: 'markt/aanbieden', component: TradeCreationComponent, canActivate: [AuthGuard], data: {role: [Roles.User]}},
+          {path: 'leaderboard', component: LeaderboardComponent, canActivate: [AuthGuard], data: {role: [Roles.User]}},
+          {path: 'speluitleg', component: ManualOverviewComponent, canActivate: [AuthGuard], data: {role: [Roles.User]}},
+          {path: 'speluitleg/algemeen', component: ManualGeneralComponent, canActivate: [AuthGuard], data: {role: [Roles.User]}},
+          {path: 'speluitleg/competities', component: ManualCompeteComponent, canActivate: [AuthGuard], data: {role: [Roles.User]}},
+          {path: 'speluitleg/teams', component: ManualTeamsComponent, canActivate: [AuthGuard], data: {role: [Roles.User]}},
+          {path: 'speluitleg/voorspellen', component: ManualForecastComponent, canActivate: [AuthGuard], data: {role: [Roles.User]}},
+          {path: 'speluitleg/markt', component: ManualMarketComponent, canActivate: [AuthGuard], data: {role: [Roles.User]}}
             //TODO: meer paths toevoegen
         ]),
         ReactiveFormsModule,

@@ -3,6 +3,7 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 
 import { AuthService } from "../services/auth/auth.service";
 import {PathService} from "../services/path/path.service";
+import {Roles} from "../model/Roles";
 
 @Injectable({ providedIn: 'root'})
 export class AuthGuard implements CanActivate {
@@ -13,6 +14,18 @@ export class AuthGuard implements CanActivate {
 
     const currentUser = this.auth.getCurrentUser;
     if (currentUser) {
+      if (route.data['role'] && route.data['role'][0] !== currentUser.roles[0]){
+
+        alert('U heeft geen rechten om hier naar toe te gaan. \n' +
+              'U wordt teruggebracht naar het dashboard.');
+
+        currentUser.roles.includes(Roles.User) ?
+          this.router.navigate([this.path.getUserDashboardPath]) :
+          this.router.navigate([this.path.getAdminDashBoardPath]);
+
+        return false;
+      }
+
       return true;
     }
 

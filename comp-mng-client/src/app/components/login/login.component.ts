@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import { Router } from '@angular/router';
+import {Router} from '@angular/router';
 import {AuthService} from "../../services/auth/auth.service";
-import {UrlService} from "../../services/url/url.service";
 import {PathService} from "../../services/path/path.service";
+import {Roles} from "../../model/Roles";
 
 @Component({
   selector: 'app-login',
@@ -27,9 +27,9 @@ export class LoginComponent {
       this.loginForm.get('password')?.value)
         .subscribe((user) => {
 
-          if (user.roles[0] === 'ROLE_EMPLOYEE') {
+          if (user.roles.includes(Roles.User)) {
             this.router.navigate([this.path.getUserDashboardPath]);
-          } else if (user.roles[0] === 'ROLE_ADMIN') {
+          } else if (user.roles.includes(Roles.Admin)) {
             this.router.navigate([this.path.getAdminDashBoardPath]);
           }
         })
