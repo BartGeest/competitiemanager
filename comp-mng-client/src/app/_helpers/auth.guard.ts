@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate {
 
     const currentUser = this.auth.getCurrentUser;
     if (currentUser) {
-      if (route.data['role'] && route.data['role'][0] !== currentUser.roles[0]){
+      if (route.data['role'] && route.data['role'].every((role :string) => currentUser.roles.includes(role))){
 
         alert('U heeft geen rechten om hier naar toe te gaan. \n' +
               'U wordt teruggebracht naar het dashboard.');
