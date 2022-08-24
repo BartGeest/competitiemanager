@@ -1,22 +1,11 @@
 package novi.uni.compserver.scheduler.tasks;
 
-import novi.uni.compserver.model.Competition;
-import novi.uni.compserver.model.Match;
-import novi.uni.compserver.model.Team;
 import novi.uni.compserver.repositories.CompetitionRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 @EnableAsync

@@ -1,8 +1,8 @@
 package novi.uni.compserver.services;
 
 import novi.uni.compserver.exceptions.NoviEmployeeNotFoundException;
-import novi.uni.compserver.model.NoviEmployee;
-import novi.uni.compserver.model.Team;
+import novi.uni.compserver.model.entities.NoviEmployee;
+import novi.uni.compserver.model.entities.Team;
 import novi.uni.compserver.model.enums.SportName;
 import novi.uni.compserver.payload.responses.ApiResponse;
 import novi.uni.compserver.repositories.NoviEmployeeRepository;

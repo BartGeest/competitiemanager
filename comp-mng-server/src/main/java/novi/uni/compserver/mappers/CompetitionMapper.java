@@ -1,19 +1,25 @@
 package novi.uni.compserver.mappers;
 
-import novi.uni.compserver.model.Competition;
+import novi.uni.compserver.model.dtos.UserCompetitionDTO;
+import novi.uni.compserver.model.entities.Competition;
 import novi.uni.compserver.payload.responses.CompetitionResponse;
 
 public class CompetitionMapper {
 
-    public static CompetitionResponse mapCompToCompResponse(Competition competition) {
-        CompetitionResponse competitionResponse = new CompetitionResponse();
+    private static final int defaultTeamAmount = 0;
+    private static final String SLASH = "/";
 
-        competitionResponse.setId(competition.getId());
-        competitionResponse.setName(competition.getName());
-        competitionResponse.setStartsAt(competition.getStartsAt());
-        competitionResponse.setCurrentTeamAmount(competition.getCompetitors().size());
-        competitionResponse.setMaxTeamAmount(competition.getMaxAllowedTeams());
+    public static UserCompetitionDTO map(Competition competition) {
+        UserCompetitionDTO userCompetitionDTO = new UserCompetitionDTO();
+        userCompetitionDTO.setId(competition.getId());
+        userCompetitionDTO.setName(competition.getName());
 
-        return competitionResponse;
+        if (competition.getCompetitors() == null) {
+            userCompetitionDTO.setCompetitorAmount("" + defaultTeamAmount + SLASH + competition.getMaxAllowedTeams());
+        } else {
+            userCompetitionDTO.setCompetitorAmount("" + competition.getCompetitors().size() + SLASH + competition.getMaxAllowedTeams());
+        }
+
+        return userCompetitionDTO;
     }
 }

@@ -4,7 +4,6 @@ import {BehaviorSubject, firstValueFrom, map, Observable} from "rxjs";
 import {ACCESS_TOKEN} from "../../constants/constants";
 import {UrlService} from "../url/url.service";
 import {User} from "../../model/User";
-import {Roles} from "../../model/Roles";
 
 @Injectable({
   providedIn: 'root'

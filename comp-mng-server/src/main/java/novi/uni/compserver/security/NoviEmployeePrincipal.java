@@ -1,7 +1,7 @@
 package novi.uni.compserver.security;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import novi.uni.compserver.model.NoviEmployee;
+import novi.uni.compserver.model.entities.NoviEmployee;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

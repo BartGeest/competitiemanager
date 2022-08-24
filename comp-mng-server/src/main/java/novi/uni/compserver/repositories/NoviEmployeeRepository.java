@@ -1,6 +1,6 @@
 package novi.uni.compserver.repositories;
 
-import novi.uni.compserver.model.NoviEmployee;
+import novi.uni.compserver.model.entities.NoviEmployee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

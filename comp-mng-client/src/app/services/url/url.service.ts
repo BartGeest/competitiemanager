@@ -15,4 +15,8 @@ export class UrlService {
   get getAuthUrl(): string {
     return environment.url.auth;
   }
+
+  get getCompetitionsUrl(): string {
+    return environment.url.competition;
+  }
 }

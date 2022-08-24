@@ -1,4 +1,4 @@
-package novi.uni.compserver.model;
+package novi.uni.compserver.model.entities;
 
 import javax.persistence.*;
 import java.util.Date;
