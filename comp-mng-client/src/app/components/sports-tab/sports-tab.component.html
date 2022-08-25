@@ -1,7 +1,7 @@
 <div class="clr-row clr-justify-content-center">
   <clr-tabs>
     <clr-tab *ngFor="let name of sport_names;">
-      <button clrTabLink>{{name}}</button>
+      <button clrTabLink (click)="clickedSport(name)">{{name}}</button>
     </clr-tab>
   </clr-tabs>
 </div>
