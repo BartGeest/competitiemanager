@@ -1,6 +1,6 @@
 package novi.uni.compserver.security;
 
-import novi.uni.compserver.model.NoviEmployee;
+import novi.uni.compserver.model.entities.NoviEmployee;
 import novi.uni.compserver.repositories.NoviEmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

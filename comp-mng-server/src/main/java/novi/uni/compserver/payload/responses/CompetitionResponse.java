@@ -1,21 +1,19 @@
 package novi.uni.compserver.payload.responses;
 
-import java.util.Date;
+import novi.uni.compserver.model.dtos.UserCompetitionDTO;
+import novi.uni.compserver.model.entities.Competition;
+
+import java.util.List;
 
 public class CompetitionResponse {
 
-    public void setId(long id) {
+    private List<UserCompetitionDTO> competitions;
+
+    public CompetitionResponse(List<UserCompetitionDTO> competitions) {
+        this.competitions = competitions;
     }
 
-    public void setName(String name) {
-    }
-
-    public void setStartsAt(Date startsAt) {
-    }
-
-    public void setCurrentTeamAmount(int currentTeamAmount) {
-    }
-
-    public void setMaxTeamAmount(int maxTeamAmount) {
+    public List<UserCompetitionDTO> getCompetitions() {
+        return competitions;
     }
 }

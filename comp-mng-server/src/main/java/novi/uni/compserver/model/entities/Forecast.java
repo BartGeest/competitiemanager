@@ -1,4 +1,4 @@
-package novi.uni.compserver.model;
+package novi.uni.compserver.model.entities;
 
 import novi.uni.compserver.model.enums.ForecastType;
 import org.hibernate.annotations.NaturalId;

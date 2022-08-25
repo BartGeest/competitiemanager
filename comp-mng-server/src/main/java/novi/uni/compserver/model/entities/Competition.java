@@ -1,4 +1,4 @@
-package novi.uni.compserver.model;
+package novi.uni.compserver.model.entities;
 
 import novi.uni.compserver.model.enums.SportName;
 
@@ -31,6 +31,8 @@ public class Competition {
 
     @OneToMany(mappedBy = "competition")
     private List<Match> matches;
+
+    private Boolean isClosedForParticipation;
 
     private static final int maxAllowedTeams = 100;
 
@@ -88,5 +90,13 @@ public class Competition {
 
     public int getMaxAllowedTeams() {
         return maxAllowedTeams;
+    }
+
+    public void setIsClosedForParticipation(Boolean isClosedForParticipation) {
+        this.isClosedForParticipation = isClosedForParticipation;
+    }
+
+    public Boolean getIsClosedForParticipation() {
+        return this.isClosedForParticipation;
     }
 }

@@ -1,6 +1,6 @@
 package novi.uni.compserver.mappers;
 
-import novi.uni.compserver.model.Forecast;
+import novi.uni.compserver.model.entities.Forecast;
 import novi.uni.compserver.payload.responses.ForecastResponse;
 
 public class ForecastMapper {

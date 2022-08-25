@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {CompetitionRow} from "../../../model/CompetitionRow";
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {PathService} from "../../../services/path/path.service";
+import {Competition} from "../../../model/Competition";
+import {CompetitionService} from "../../../services/competition/competition.service";
 
 @Component({
   selector: 'app-compeition-overview',
@@ -14,23 +15,31 @@ export class CompetitionOverviewComponent implements OnInit {
     'id',
     'naam',
     '# deelnemers',
-    'limiet deelnemers',
-    'begint over'
   ];
 
   isRowClicked: boolean = false;
 
-  // TODO dit vervangen met een call naar de back-end
-  ph_comps: CompetitionRow[] = [
-    new CompetitionRow(1, 'jemoeder', 69, 100, new Date()),
-    new CompetitionRow(2, 'jevader', 42, 100, new Date()),
-    new CompetitionRow(3, 'jezus', 88, 100, new Date()),
-    new CompetitionRow(4, 'neef', 36, 100, new Date())
-  ];
+  competitions: Competition[] = [];
 
-  constructor(private router: Router, private route: ActivatedRoute, private path: PathService) { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private path: PathService,
+    private compService: CompetitionService) {}
 
   ngOnInit(): void {
+    //door gebruik te maken van een resolver is er data op te halen vanuit de ActivatedRoute
+    //HEEL BELANGRIJK in de subscribe moet je wel de key gebruiken die in de resolver staat bij de route in app.module.ts
+    //In dit geval is dat competitionResponse
+    this.route.data.subscribe(({competitionResponse}) => {
+      this.competitions = competitionResponse.competitions;
+    })
+  }
+
+  retrieveCompetitions(sportname: string) {
+    this.compService.getCompetitionsBySport(sportname).subscribe( (competitionResponse) => {
+      this.competitions = competitionResponse.competitions;
+    });
   }
 
   navToCompParticipate(): void {

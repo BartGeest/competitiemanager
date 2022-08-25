@@ -1,4 +1,4 @@
-package novi.uni.compserver.model;
+package novi.uni.compserver.model.entities;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -21,7 +21,7 @@ public class NoviEmployee {
     @Size(max = 100)
     private String password;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "employee_roles",
             joinColumns = @JoinColumn(name = "fk_employee"),
             inverseJoinColumns = @JoinColumn(name = "fk_role"))

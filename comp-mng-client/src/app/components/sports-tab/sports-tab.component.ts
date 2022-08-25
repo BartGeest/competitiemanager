@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {TITLES} from "../../constants/constants";
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {sportsDict} from "../../model/SportsDictionary";
+
 
 @Component({
   selector: 'app-sports-tab',
@@ -10,20 +11,17 @@ export class SportsTabComponent implements OnInit {
 
   sport_names: string[];
 
+  @Output() sportNameEmitter = new EventEmitter<string>();
+
   constructor() {
-    this.sport_names = [
-      TITLES.sports.football,
-      TITLES.sports.rugby,
-      TITLES.sports.basketball,
-      TITLES.sports.baseball,
-      TITLES.sports.volleyball
-    ];
+    this.sport_names = Object.keys(sportsDict);
   }
 
   ngOnInit(): void {
   }
 
-  //TODO: wanneer de sport is gewijzigd (click) dan event uitgooien (EventEmitter?)
-  // dit ten behoeve van calls naar de back-end om de goede data op te halen
+  clickedSport(sportname: string) {
 
+    this.sportNameEmitter.emit(sportsDict[sportname]);
+  }
 }

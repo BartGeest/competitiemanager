@@ -1,8 +1,8 @@
 package novi.uni.compserver.services;
 
 import novi.uni.compserver.exceptions.RoleNotFoundException;
-import novi.uni.compserver.model.NoviEmployee;
-import novi.uni.compserver.model.Role;
+import novi.uni.compserver.model.entities.NoviEmployee;
+import novi.uni.compserver.model.entities.Role;
 import novi.uni.compserver.model.enums.RoleName;
 import novi.uni.compserver.payload.responses.ApiResponse;
 import novi.uni.compserver.repositories.NoviEmployeeRepository;

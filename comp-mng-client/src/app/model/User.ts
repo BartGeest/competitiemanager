@@ -1,18 +1,18 @@
 export class User {
-  token: string;
+  accessToken: string;
   roles: string[];
 
-  constructor(token: string, roles: string[]) {
-    this.token = token;
+  constructor(accessToken: string, roles: string[]) {
+    this.accessToken = accessToken;
     this.roles = roles;
   }
 
   get getUserToken(): string {
-    return this.token;
+    return this.accessToken;
   }
 
-  set setUserToken(token: string) {
-    this.token = token;
+  set setUserToken(accessToken: string) {
+    this.accessToken = accessToken;
   }
 
   get getUserRoles(): string[] {

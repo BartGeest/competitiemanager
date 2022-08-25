@@ -1,8 +1,8 @@
 package novi.uni.compserver.repositories;
 
-import novi.uni.compserver.model.Forecast;
-import novi.uni.compserver.model.Match;
-import novi.uni.compserver.model.NoviEmployee;
+import novi.uni.compserver.model.entities.Forecast;
+import novi.uni.compserver.model.entities.Match;
+import novi.uni.compserver.model.entities.NoviEmployee;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
