@@ -12,16 +12,18 @@ public class Team {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Enumerated(EnumType.STRING)
-    private SportName sportName;
-
     @NotBlank
     @Size(max = 36)
     private String name;
 
+    @Enumerated(EnumType.STRING)
+    private SportName sportName;
+
     @ManyToOne
     @JoinColumn(name = "owner")
     private NoviEmployee owner;
+
+    private Boolean canParticipate;
 
     private Long wonMatches;
 
@@ -41,6 +43,7 @@ public class Team {
         this.name = name;
         this.owner = owner;
         this.sportName = sportName;
+        this.canParticipate = Boolean.TRUE;
     }
 
     public Long getId() {
@@ -59,12 +62,28 @@ public class Team {
         this.name = name;
     }
 
+    public SportName getSportName() {
+        return sportName;
+    }
+
+    public void setSportName(SportName sportName) {
+        this.sportName = sportName;
+    }
+
     public NoviEmployee getOwner() {
         return owner;
     }
 
     public void setOwner(NoviEmployee owner) {
         this.owner = owner;
+    }
+
+    public Boolean getCanParticipate() {
+        return canParticipate;
+    }
+
+    public void setCanParticipate(Boolean canParticipate) {
+        this.canParticipate = canParticipate;
     }
 
     public Long getWonMatches() {
@@ -97,13 +116,5 @@ public class Team {
 
     public void setCost(Long cost) {
         this.cost = cost;
-    }
-
-    public SportName getSportName() {
-        return sportName;
-    }
-
-    public void setSportName(SportName sportName) {
-        this.sportName = sportName;
     }
 }

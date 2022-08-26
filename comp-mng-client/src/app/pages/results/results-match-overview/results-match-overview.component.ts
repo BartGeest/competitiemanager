@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {MatchResultRow} from "../../../model/MatchResultRow";
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {PathService} from "../../../services/path/path.service";
 
@@ -17,13 +16,6 @@ export class ResultsMatchOverviewComponent implements OnInit {
     'Gestart op',
     'Beëindigd op',
     'Uitslag'
-  ];
-
-  //TODO: goede info van back-end krijgen
-  ph_match_results: MatchResultRow[] = [
-    new MatchResultRow(1, 'team-kees', 'team-jan', new Date(), new Date(), '2 - 1'),
-    new MatchResultRow(2, 'jemoeder', 'jevader', new Date(), new Date(), '69 - 69'),
-    new MatchResultRow(3, 'dikke', 'kaas', new Date(), new Date(), '10 - 0')
   ];
 
   constructor(private router: Router, private path: PathService) { }

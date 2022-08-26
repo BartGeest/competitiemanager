@@ -1,17 +1,18 @@
 package novi.uni.compserver.controllers;
 
-import novi.uni.compserver.payload.requests.TeamRequest;
+import novi.uni.compserver.model.enums.SportName;
+import novi.uni.compserver.payload.requests.TeamCreationRequest;
 import novi.uni.compserver.payload.responses.ApiResponse;
+import novi.uni.compserver.payload.responses.TeamCreationResponse;
+import novi.uni.compserver.payload.responses.TeamsResponse;
 import novi.uni.compserver.security.CurrentNoviEmployee;
 import novi.uni.compserver.security.NoviEmployeePrincipal;
 import novi.uni.compserver.services.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -22,14 +23,28 @@ public class TeamController {
     @Autowired
     TeamService teamService;
 
+    @GetMapping("get/teams/{sportName}")
+    @PreAuthorize("hasRole('EMPLOYEE')")
+    public ResponseEntity<?> getTeams(
+            @CurrentNoviEmployee NoviEmployeePrincipal noviEmployeePrincipal,
+            @PathVariable SportName sportName) {
+
+        TeamsResponse response = new TeamsResponse(
+                teamService.getTeams(noviEmployeePrincipal.getId(), sportName));
+
+        return ResponseEntity.ok(response);
+    }
+
     @PostMapping("/create")
     @PreAuthorize("hasRole('EMPLOYEE')")
-    public ResponseEntity<?> createTeam(
+    public ResponseEntity<TeamCreationResponse> createTeam(
             @CurrentNoviEmployee NoviEmployeePrincipal noviEmployeePrincipal,
-            @Valid @RequestBody TeamRequest teamRequest) {
+            @Valid @RequestBody TeamCreationRequest request) {
 
-        ApiResponse response = teamService.isTeamCreated(noviEmployeePrincipal.getId(), teamRequest.getName(), teamRequest.getSportName());
+        TeamCreationResponse response = new TeamCreationResponse(
+                "Je nieuwe team is succesvol aangemaakt!",
+                teamService.create(noviEmployeePrincipal.getId(), request));
 
-        return new ResponseEntity<>(response.getMessage(), response.getStatus());
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 }

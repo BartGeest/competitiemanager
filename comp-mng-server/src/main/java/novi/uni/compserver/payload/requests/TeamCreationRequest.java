@@ -5,20 +5,17 @@ import novi.uni.compserver.model.enums.SportName;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-public class TeamRequest {
+public class TeamCreationRequest {
 
-    private SportName sportName;
-
-    @NotBlank
-    @Size(max = 20)
     private String name;
 
-
-    public SportName getSportName() {
-        return sportName;
-    }
+    private SportName sportname;
 
     public String getName() {
         return name;
+    }
+
+    public SportName getSportName() {
+        return sportname;
     }
 }

@@ -24,8 +24,8 @@ public class RegistrationController {
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> createNoviEmployee(@Valid @RequestBody RegisterRequest registerRequest) {
 
-        ApiResponse response = registrationService.isEmployeeCreated(registerRequest.getUsername());
+        //ApiResponse response = registrationService.isEmployeeCreated(registerRequest.getUsername());
 
-        return new ResponseEntity<>(response.getMessage(), response.getStatus());
+        return ResponseEntity.ok("joe");
     }
 }

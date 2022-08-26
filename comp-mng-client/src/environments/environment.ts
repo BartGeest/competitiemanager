@@ -7,7 +7,11 @@ export const environment = {
   url: {
     auth: 'http://localhost:8080/api/auth/login',
     register: 'http://localhost:8080/api/auth/register', //TODO: deze url wijzigen naar nog te maken juiste
-    competition: 'http://localhost:8080/api/competition/get_competitions/'
+    competition: 'http://localhost:8080/api/competition/get_competitions/',
+    team: {
+      overview: 'http://localhost:8080/api/team/get/teams/',
+      creation: 'http://localhost:8080/api/team/create'
+    }
     //TODO: de andere endpoints toevoegen
   },
   path: {
@@ -22,7 +26,7 @@ export const environment = {
     },
     teams: {
       overview: '/teams', //de 'eerste' pagina heeft een forward slash nodig, anders kan die hem niet vinden
-      creation: 'aanmaken' //pagina's die relative zijn hebben dat dus juist weer niet nodig....
+      creation: 'aanmaken' //pagina's die relative zijn hebben dat dus juist weer niet nodig...
     },
     forecasts: {
       overview: '/voorspellingen',

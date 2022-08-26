@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PathService} from "../../../services/path/path.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {TeamOverviewRow} from "../../../model/TeamOverviewRow";
+import {Team} from "../../../model/team/Team";
 
 @Component({
   selector: 'app-team-overview',
@@ -11,25 +11,25 @@ import {TeamOverviewRow} from "../../../model/TeamOverviewRow";
 export class TeamOverviewComponent implements OnInit {
 
   team_columns: string[] = [
-    'Naam',
-    'Competitie',
-    'Gewonnen',
-    'Gelijk',
-    'Verloren'
+    'id',
+    'naam',
+    'beschikbaar',
+    'gewonnen',
+    'gelijk',
+    'verloren'
   ];
 
-  //placeholder data
-  ph_teams: TeamOverviewRow[] = [
-    new TeamOverviewRow('Team #1', 'Comp #1', 5,5,5),
-    new TeamOverviewRow('Team #2', 'Comp #2', 5,5,5),
-    new TeamOverviewRow('Team #3', 'Comp #3', 5,5,5),
-    new TeamOverviewRow('Team #4', 'Comp #4', 5,5,5)
-  ];
+  teams: Team[] = [];
 
-  constructor(private router: Router, private route: ActivatedRoute, private path: PathService) { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private path: PathService) { }
 
   ngOnInit(): void {
-    //TODO: call naar backend - service maken voor teams
+    this.route.data.subscribe( ({teamsResponse}) => {
+      this.teams = teamsResponse.teams;
+    })
   }
 
   navToTeamCreation(): void {

@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {MarketRow} from "../../../model/MarketRow";
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {PathService} from "../../../services/path/path.service";
 
@@ -19,12 +18,6 @@ export class MarketOverviewComponent implements OnInit {
     'Gelijk',
     'Verloren',
     'Prijs'
-  ];
-
-  ph_market_rows: MarketRow[] = [
-    new MarketRow('Gurt', 'team-naam', 5, 6, 2, 300),
-    new MarketRow('Baklap', 'jemoeder', 9, 0, 2, 360),
-    new MarketRow('Trudie', 'dikzak', 2, 7, 1, 169)
   ];
 
   constructor(private router: Router, private route: ActivatedRoute, private path: PathService) { }

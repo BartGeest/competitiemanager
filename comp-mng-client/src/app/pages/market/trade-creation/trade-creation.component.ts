@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {OfferTeamRow} from "../../../model/OfferTeamRow";
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-trade-creation',
@@ -19,20 +18,13 @@ export class TradeCreationComponent implements OnInit {
     'Verloren'
   ];
 
-  ph_team_offer: OfferTeamRow[] = [
-    new OfferTeamRow('bla', 'bla', 'bla', 0, 0,0),
-    new OfferTeamRow('sfsf', 'wefresf', 'segfseg', 0,0,0),
-    new OfferTeamRow('sefsef', 'sefg', 'awrgv', 0,0,0)
-  ];
-
-
   constructor() { }
 
   ngOnInit(): void {
   }
 
   onRowClick(): void {
-    console.log('krijg de ... geen zin meeeeheeeeer');
+
     this.toggleRowClicked();
   }
 

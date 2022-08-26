@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {LeaderboardRow} from "../../model/LeaderboardRow";
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-leaderboard',
@@ -16,12 +15,6 @@ export class LeaderboardComponent implements OnInit {
     'TVW',
     'Punten'
   ];
-
-  ph_leaderboard: LeaderboardRow[] = [
-    new LeaderboardRow('kees', 1,1,1,1,1),
-    new LeaderboardRow('klaas', 1,1,1,1,1),
-    new LeaderboardRow('kevin', 1,1,1,1,1,)
-  ]
 
   constructor() { }
 

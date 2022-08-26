@@ -18,10 +18,10 @@
           <clr-input-container *ngFor="let teamGroup of teams?.controls; let i = index" [formGroupName]="i">
             <input type="text" clrInput placeholder="Team naam" name="name" formControlName="name"/>
           </clr-input-container>
-          <cds-icon-button type="button" *ngIf="teamsSize < 8" style="margin-top: 10px" action="outline" (click)="addTeamInput()">
+          <cds-icon-button aria-label="plus" type="button" *ngIf="teamsSize < 8" style="margin-top: 10px" action="outline" (click)="addTeamInput()">
             <cds-icon shape="plus-circle" size="24"></cds-icon>
           </cds-icon-button>
-          <cds-icon-button type="button" *ngIf="teamsSize > 1" style="margin-top: 10px; margin-left: 10px" action="outline" (click)="removeTeamInput()">
+          <cds-icon-button aria-label="minus" type="button" *ngIf="teamsSize > 1" style="margin-top: 10px; margin-left: 10px" action="outline" (click)="removeTeamInput()">
             <cds-icon shape="minus-circle" size="24"></cds-icon>
           </cds-icon-button>
         </div>

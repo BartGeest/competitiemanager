@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {FormArray, FormControl, FormGroup, FormBuilder} from "@angular/forms";
-import {TITLES} from "../../../constants/constants";
+import {Component, OnInit} from '@angular/core';
+import {FormArray, FormControl, FormGroup} from "@angular/forms";
+import {sportsDict} from "../../../model/domain/SportsDictionary";
 
 @Component({
   selector: 'app-team-creation',
@@ -13,13 +13,9 @@ export class TeamCreationComponent implements OnInit {
   dropdownChoices: string[];
 
   constructor() {
-    this.dropdownChoices = [
-      TITLES.sports.football,
-      TITLES.sports.rugby,
-      TITLES.sports.basketball,
-      TITLES.sports.baseball,
-      TITLES.sports.volleyball
-    ];
+    this.dropdownChoices = Object.keys(sportsDict);
+
+    //TODO: refactor want dit slaat nergens op
 
     this.creationForm = new FormGroup({
       teams: new FormArray([
@@ -60,5 +56,12 @@ export class TeamCreationComponent implements OnInit {
 
   submitTeams(): void {
     console.log('Inside submitTeams');
+
+    console.log('teams FormArray', this.teams);
+
+    console.log(this.creationForm);
+    //TODO: de form controls omzetten naar een ander object?
+
+    //TODO: team service aanroepen voor post naar back-end
   }
 }

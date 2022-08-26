@@ -31,7 +31,7 @@ public class RegistrationService {
     public ApiResponse isEmployeeCreated(String username) {
 
         if (noviEmployeeRepository.existsByUsername(username)) {
-            return new ApiResponse("Novimederker bestaat al", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ApiResponse("Novimederker bestaat al");
         }
 
         NoviEmployee newEmployee = new NoviEmployee(username, passwordEncoder.encode(tempPass));
@@ -43,7 +43,7 @@ public class RegistrationService {
 
         noviEmployeeRepository.save(newEmployee);
 
-        return new ApiResponse("Nieuwe Novimedewerker is aangemaakt", HttpStatus.OK);
+        return new ApiResponse("Nieuwe Novimedewerker is aangemaakt");
     }
 
     public boolean isAdminCreated(String username) {

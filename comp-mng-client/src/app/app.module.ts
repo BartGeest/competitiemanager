@@ -46,8 +46,9 @@ import { ManualMarketComponent } from './pages/manual/manual-market/manual-marke
 import { NavCardComponent } from './components/nav-card/nav-card.component';
 import { ManualGeneralComponent } from './pages/manual/manual-general/manual-general.component';
 import { AdminDashboardComponent } from './pages/dashboard/admin-dashboard/admin-dashboard.component';
-import {Roles} from "./model/Roles";
+import {Roles} from "./model/domain/Roles";
 import {CompetitionResolver} from "./resolvers/comp-resolver/competition.resolver";
+import {TeamOverviewResolver} from "./resolvers/team-resolver/team.overview.resolver";
 
 ClarityIcons.addIcons(
   plusCircleIcon,
@@ -109,7 +110,8 @@ ClarityIcons.addIcons(
             path: 'teams',
             component: TeamOverviewComponent,
             canActivate: [AuthGuard],
-            data: {role: [Roles.User]}
+            data: {role: [Roles.User]},
+            resolve: {teamsResponse: TeamOverviewResolver}
           },
           {
             path: 'teams/aanmaken',

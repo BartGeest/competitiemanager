@@ -9,7 +9,7 @@ export class UrlService {
   constructor() { }
 
   /**
-   * get methodes die een endpoint teruggeeft van de back-end
+   * get methodes die een endpoint teruggeven
    */
 
   get getAuthUrl(): string {
@@ -18,5 +18,13 @@ export class UrlService {
 
   get getCompetitionsUrl(): string {
     return environment.url.competition;
+  }
+
+  get getTeamsOverviewUrl(): string {
+    return environment.url.team.overview;
+  }
+
+  get getTeamsCreationUrl(): string {
+    return environment.url.team.creation;
   }
 }
