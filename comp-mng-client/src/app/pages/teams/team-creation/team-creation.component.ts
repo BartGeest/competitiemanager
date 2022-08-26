@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormArray, FormControl, FormGroup} from "@angular/forms";
+import {UntypedFormArray, UntypedFormControl, UntypedFormGroup} from "@angular/forms";
 import {sportsDict} from "../../../model/domain/SportsDictionary";
 
 @Component({
@@ -9,7 +9,7 @@ import {sportsDict} from "../../../model/domain/SportsDictionary";
 })
 export class TeamCreationComponent implements OnInit {
 
-  creationForm: FormGroup;
+  creationForm: UntypedFormGroup;
   dropdownChoices: string[];
 
   constructor() {
@@ -17,11 +17,11 @@ export class TeamCreationComponent implements OnInit {
 
     //TODO: refactor want dit slaat nergens op
 
-    this.creationForm = new FormGroup({
-      teams: new FormArray([
-        new FormGroup({
-          sport: new FormControl(''),
-          name: new FormControl('')
+    this.creationForm = new UntypedFormGroup({
+      teams: new UntypedFormArray([
+        new UntypedFormGroup({
+          sport: new UntypedFormControl(''),
+          name: new UntypedFormControl('')
         })
       ])
     });
@@ -31,20 +31,20 @@ export class TeamCreationComponent implements OnInit {
     //TODO: call naar back-end - service maken
   }
 
-  get teams(): FormArray {
-    return this.creationForm.get('teams') as FormArray;
+  get teams(): UntypedFormArray {
+    return this.creationForm.get('teams') as UntypedFormArray;
   }
 
   get teamsSize(): number {
-    let formArray = this.creationForm.get('teams') as FormArray;
+    let formArray = this.creationForm.get('teams') as UntypedFormArray;
     return formArray.length;
   }
 
   addTeamInput() {
     if (this.teamsSize < 8) {
       this.teams.push(
-        new FormGroup({
-          name: new FormControl('')
+        new UntypedFormGroup({
+          name: new UntypedFormControl('')
         })
       );
     }
