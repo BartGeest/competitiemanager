@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {FormArray, FormControl, FormGroup, FormBuilder} from "@angular/forms";
-import {TITLES} from "../../../constants/constants";
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormRecord} from "@angular/forms";
+import {sportsDict} from "../../../model/domain/SportsDictionary";
+import {TeamService} from "../../../services/team/team.service";
+import {TeamCreationResponse} from "../../../model/team/TeamCreationResponse";
 
 @Component({
   selector: 'app-team-creation',
@@ -9,56 +11,57 @@ import {TITLES} from "../../../constants/constants";
 })
 export class TeamCreationComponent implements OnInit {
 
-  creationForm: FormGroup;
   dropdownChoices: string[];
+  selectedSport: string;
 
-  constructor() {
-    this.dropdownChoices = [
-      TITLES.sports.football,
-      TITLES.sports.rugby,
-      TITLES.sports.basketball,
-      TITLES.sports.baseball,
-      TITLES.sports.volleyball
-    ];
+  sportInputs: FormRecord<FormControl<string>>;
+  formKeys = ['0'];
+  inputCount = 0;
 
-    this.creationForm = new FormGroup({
-      teams: new FormArray([
-        new FormGroup({
-          sport: new FormControl(''),
-          name: new FormControl('')
-        })
-      ])
-    });
+  teamsResponse: TeamCreationResponse = {createdTeams: [], message: '', numberOfTeams: 0};
+  showPopup: boolean = false;
+
+  constructor(private teamService: TeamService) {
+    this.dropdownChoices = Object.keys(sportsDict);
+    this.selectedSport = sportsDict[this.dropdownChoices[0]];
+    this.sportInputs = new FormRecord<FormControl<string>>({});
+    this.sportInputs.addControl(this.formKeys[this.inputCount], new FormControl<string>('', {nonNullable: true}));
   }
 
-  ngOnInit(): void {
-    //TODO: call naar back-end - service maken
+  ngOnInit(): void { }
+
+  changeSport(sport: string): void {
+    this.selectedSport = sportsDict[sport];
   }
 
-  get teams(): FormArray {
-    return this.creationForm.get('teams') as FormArray;
+  addTeamInput(): void {
+    this.inputCount++;
+    let num = this.inputCount.toString();
+    this.formKeys.push(num);
+    this.sportInputs.addControl(this.formKeys[this.inputCount], new FormControl<string>('', {nonNullable: true}));
   }
 
-  get teamsSize(): number {
-    let formArray = this.creationForm.get('teams') as FormArray;
-    return formArray.length;
-  }
-
-  addTeamInput() {
-    if (this.teamsSize < 8) {
-      this.teams.push(
-        new FormGroup({
-          name: new FormControl('')
-        })
-      );
-    }
-  }
-
-  removeTeamInput() {
-    this.teams.controls.pop();
+  removeTeamInput(): void {
+    this.sportInputs.removeControl(this.formKeys[this.inputCount]);
+    this.formKeys.pop();
+    this.inputCount--;
   }
 
   submitTeams(): void {
-    console.log('Inside submitTeams');
+    let teams: string[] = [];
+
+    for (let i = 0; i <= this.inputCount; i++) {
+      teams.push(this.sportInputs.get(this.formKeys[i])?.value);
+    }
+
+    this.teamService.createTeam(this.selectedSport, teams)
+      .subscribe((teamResponse) => {
+        this.teamsResponse = teamResponse;
+        this.showPopup = true;
+      });
+  }
+
+  closeModal(): void {
+    this.showPopup = false;
   }
 }

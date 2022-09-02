@@ -1,22 +1,20 @@
 package novi.uni.compserver.payload.responses;
 
-import org.springframework.http.HttpStatus;
-
-public class ApiResponse {
+public class ApiResponse<T> {
 
     private String message;
-    private HttpStatus status;
 
-    public ApiResponse(String message, HttpStatus status) {
+    private T t;
+
+    public ApiResponse(String message) {
         this.message = message;
-        this.status = status;
     }
 
     public String getMessage() {
         return message;
     }
 
-    public HttpStatus getStatus() {
-        return status;
+    public T getT() {
+        return t;
     }
 }

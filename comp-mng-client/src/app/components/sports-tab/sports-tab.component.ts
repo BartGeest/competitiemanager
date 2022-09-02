@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {sportsDict} from "../../model/SportsDictionary";
+import {sportsDict} from "../../model/domain/SportsDictionary";
 
 
 @Component({

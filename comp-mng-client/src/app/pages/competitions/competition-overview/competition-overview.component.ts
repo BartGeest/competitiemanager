@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {PathService} from "../../../services/path/path.service";
-import {Competition} from "../../../model/Competition";
+import {Competition} from "../../../model/competition/Competition";
 import {CompetitionService} from "../../../services/competition/competition.service";
 
 @Component({

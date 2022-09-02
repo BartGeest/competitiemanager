@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {UrlService} from "../url/url.service";
 import {Observable} from "rxjs";
-import {CompetitionResponse} from "../../model/CompetitionResponse";
+import {CompetitionResponse} from "../../model/competition/CompetitionResponse";
 
 @Injectable({
   providedIn: 'root'

@@ -35,10 +35,10 @@ public class CompetitionService {
 
         competitionRepository.save(competition);
 
-        return new ApiResponse("Compeitie is aangemaakt", HttpStatus.OK);
+        return new ApiResponse("Compeitie is aangemaakt");
     }
 
     public ApiResponse closeCompetition() {
-        return new ApiResponse("Mogelijkheid tot deelname is gesloten", HttpStatus.OK);
+        return new ApiResponse("Mogelijkheid tot deelname is gesloten");
     }
 }

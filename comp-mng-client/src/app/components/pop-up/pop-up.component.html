@@ -1,11 +1,13 @@
 <clr-modal [(clrModalOpen)]="openModal">
-  <h3 class="modal-title">Modal Title</h3>
+  <h3 class="modal-title">{{modalTitle}}</h3>
   <div class="modal-body">
-    <p>Modal text</p>
+    <p>{{modalMessage}}</p>
   </div>
 
+<!--  TODO: dropdown voor competities en forecast die dan wordt meegestuurd ofzo-->
+
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline" (click)="onModalClick()">{{footerCancelButtonLabel}}</button>
+    <button type="button" class="btn btn-outline" *ngIf="showCancelButton" (click)="onModalClick()">{{footerCancelButtonLabel}}</button>
     <button type="button" class="btn btn-primary" (click)="onModalClick()">{{footerActionButtonLabel}}</button>
   </div>
 

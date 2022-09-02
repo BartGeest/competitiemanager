@@ -7,11 +7,17 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class PopUpComponent implements OnInit {
 
-  //TODO: uitbreiden zodat dit functioneel is op de plekken waar het wordt gebruikt
+  @Input() modalTitle = 'Titel';
+
+  @Input() modalMessage = 'Het bericht wat getoond wordt.';
+
+  @Input() info: any;
 
   @Input() footerCancelButtonLabel: string = 'Cancel';
 
   @Input() footerActionButtonLabel: string = 'Action';
+
+  @Input() showCancelButton = false;
 
   @Input() openModal: boolean = false;
 
@@ -22,8 +28,7 @@ export class PopUpComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onModalClick() {
-    console.log('inside onModalClick')
+  onModalClick(...items: any) {
     this.modalEvent.emit();
   }
 

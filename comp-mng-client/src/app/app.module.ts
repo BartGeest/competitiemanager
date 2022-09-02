@@ -46,8 +46,11 @@ import { ManualMarketComponent } from './pages/manual/manual-market/manual-marke
 import { NavCardComponent } from './components/nav-card/nav-card.component';
 import { ManualGeneralComponent } from './pages/manual/manual-general/manual-general.component';
 import { AdminDashboardComponent } from './pages/dashboard/admin-dashboard/admin-dashboard.component';
-import {Roles} from "./model/Roles";
+import {Roles} from "./model/domain/Roles";
 import {CompetitionResolver} from "./resolvers/comp-resolver/competition.resolver";
+import {TeamOverviewResolver} from "./resolvers/team-resolver/team.overview.resolver";
+import {ToastContainerModule, ToastrModule} from "ngx-toastr";
+import { ToastrComponent } from './components/toastr/toastr.component';
 
 ClarityIcons.addIcons(
   plusCircleIcon,
@@ -84,6 +87,7 @@ ClarityIcons.addIcons(
     NavCardComponent,
     ManualGeneralComponent,
     AdminDashboardComponent,
+    ToastrComponent,
   ],
     imports: [
         BrowserModule,
@@ -109,7 +113,8 @@ ClarityIcons.addIcons(
             path: 'teams',
             component: TeamOverviewComponent,
             canActivate: [AuthGuard],
-            data: {role: [Roles.User]}
+            data: {role: [Roles.User]},
+            resolve: {teamsResponse: TeamOverviewResolver}
           },
           {
             path: 'teams/aanmaken',
@@ -226,7 +231,13 @@ ClarityIcons.addIcons(
         ClrSignpostModule,
         ClrTabsModule,
         ClrDatagridModule,
-        ClrModalModule
+        ClrModalModule,
+        ToastrModule.forRoot({
+          timeOut: 10000,
+          positionClass: 'toast-top-right',
+          progressBar: true
+        }),
+        ToastContainerModule,
     ],
   providers: [
     HttpClientModule,

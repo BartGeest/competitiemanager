@@ -49,7 +49,7 @@ public class ForecastService {
         currentNoviEmployee.getForecasts().add(forecast);
         forecastRepository.save(forecast);
 
-        return new ApiResponse("Voorspelling is aangemaakt", HttpStatus.OK);
+        return new ApiResponse("Voorspelling is aangemaakt");
     }
 
     public PagedResponse<ForecastResponse> getAllEmployeeForecasts(Long id, int page, int size) {

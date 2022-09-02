@@ -1,7 +1,6 @@
 package novi.uni.compserver.payload.responses;
 
 import novi.uni.compserver.model.dtos.UserCompetitionDTO;
-import novi.uni.compserver.model.entities.Competition;
 
 import java.util.List;
 
