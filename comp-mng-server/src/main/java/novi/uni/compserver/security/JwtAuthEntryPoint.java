@@ -14,10 +14,11 @@ import java.io.IOException;
 public class JwtAuthEntryPoint implements AuthenticationEntryPoint {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(JwtAuthEntryPoint.class);
+    private static final String MESSAGE = "Onjuiste gebruikersnaam of wachtwoord";
 
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException aex) throws IOException {
         LOGGER.error("Ongeauthoriseerd. Bericht: {}", aex.getMessage());
-        response.sendError(HttpServletResponse.SC_UNAUTHORIZED, aex.getMessage());
+        response.sendError(HttpServletResponse.SC_BAD_REQUEST, MESSAGE);
     }
 }

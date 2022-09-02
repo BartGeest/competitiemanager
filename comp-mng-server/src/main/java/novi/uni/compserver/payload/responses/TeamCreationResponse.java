@@ -1,23 +1,30 @@
 package novi.uni.compserver.payload.responses;
 
-import novi.uni.compserver.model.entities.Team;
+import java.util.List;
 
 public class TeamCreationResponse {
 
     private String message;
 
-    private Team team;
+    private List<String> createdTeams;
 
-    public TeamCreationResponse(String message, Team team) {
+    private int numberOfTeams;
+
+    public TeamCreationResponse(String message, List<String> teams) {
         this.message = message;
-        this.team = team;
+        this.createdTeams = teams;
+        this.numberOfTeams = this.createdTeams.size();
     }
 
     public String getMessage() {
         return message;
     }
 
-    public Team getRequest() {
-        return team;
+    public List<String> getCreatedTeams() {
+        return this.createdTeams;
+    }
+
+    public int getNumberOfTeams() {
+        return this.numberOfTeams;
     }
 }

@@ -49,6 +49,8 @@ import { AdminDashboardComponent } from './pages/dashboard/admin-dashboard/admin
 import {Roles} from "./model/domain/Roles";
 import {CompetitionResolver} from "./resolvers/comp-resolver/competition.resolver";
 import {TeamOverviewResolver} from "./resolvers/team-resolver/team.overview.resolver";
+import {ToastContainerModule, ToastrModule} from "ngx-toastr";
+import { ToastrComponent } from './components/toastr/toastr.component';
 
 ClarityIcons.addIcons(
   plusCircleIcon,
@@ -85,6 +87,7 @@ ClarityIcons.addIcons(
     NavCardComponent,
     ManualGeneralComponent,
     AdminDashboardComponent,
+    ToastrComponent,
   ],
     imports: [
         BrowserModule,
@@ -228,7 +231,13 @@ ClarityIcons.addIcons(
         ClrSignpostModule,
         ClrTabsModule,
         ClrDatagridModule,
-        ClrModalModule
+        ClrModalModule,
+        ToastrModule.forRoot({
+          timeOut: 10000,
+          positionClass: 'toast-top-right',
+          progressBar: true
+        }),
+        ToastContainerModule,
     ],
   providers: [
     HttpClientModule,

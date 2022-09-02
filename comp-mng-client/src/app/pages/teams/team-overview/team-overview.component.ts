@@ -28,7 +28,9 @@ export class TeamOverviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.data.subscribe( ({teamsResponse}) => {
+      console.log(this.teams);
       this.teams = teamsResponse.teams;
+      console.log(this.teams);
     })
   }
 

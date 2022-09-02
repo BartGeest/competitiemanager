@@ -3,28 +3,26 @@
 </div>
 
 <div class="content-area">
-  <form class="clr-form clr-form-vertical" [formGroup]="creationForm" (ngSubmit)="submitTeams()">
+  <form class="clr-form clr-form-vertical" [formGroup]="sportInputs" (ngSubmit)="submitTeams()">
     <div class="content-area">
-      <div class="clr-form-control" formArrayName="teams">
-        <div class="content-area">
+      <div class="content-area">
 
-          <clr-select-container>
-            <label>Kies sport</label>
-            <select clrSelect name="options">
-              <option *ngFor="let item of dropdownChoices;">{{item}}</option>
-            </select>
-          </clr-select-container>
+        <clr-select-container>
+          <label>Kies sport</label>
+          <select #sports clrSelect name="options" (change)="changeSport(sports.value)">
+            <option *ngFor="let item of dropdownChoices;">{{item}}</option>
+          </select>
+        </clr-select-container>
 
-          <clr-input-container *ngFor="let teamGroup of teams?.controls; let i = index" [formGroupName]="i">
-            <input type="text" clrInput placeholder="Team naam" name="name" formControlName="name"/>
-          </clr-input-container>
-          <cds-icon-button aria-label="plus" type="button" *ngIf="teamsSize < 8" style="margin-top: 10px" action="outline" (click)="addTeamInput()">
-            <cds-icon shape="plus-circle" size="24"></cds-icon>
-          </cds-icon-button>
-          <cds-icon-button aria-label="minus" type="button" *ngIf="teamsSize > 1" style="margin-top: 10px; margin-left: 10px" action="outline" (click)="removeTeamInput()">
-            <cds-icon shape="minus-circle" size="24"></cds-icon>
-          </cds-icon-button>
-        </div>
+        <clr-input-container *ngFor="let key of formKeys">
+          <input type="text" clrInput placeholder="Team naam" name="name" formControlName="{{key}}"/>
+        </clr-input-container>
+        <cds-icon-button aria-label="plus" type="button" *ngIf="formKeys.length < 8" style="margin-top: 10px" action="outline" (click)="addTeamInput()">
+          <cds-icon shape="plus-circle" size="24"></cds-icon>
+        </cds-icon-button>
+        <cds-icon-button aria-label="minus" type="button" *ngIf="formKeys.length > 1" style="margin-top: 10px; margin-left: 10px" action="outline" (click)="removeTeamInput()">
+          <cds-icon shape="minus-circle" size="24"></cds-icon>
+        </cds-icon-button>
       </div>
       <div class="content-area">
         <button type="submit" class="btn btn-primary">Aanmaken</button>
@@ -32,4 +30,11 @@
     </div>
   </form>
 </div>
+<app-pop-up
+  modalTitle="Succes"
+  [modalMessage]="teamsResponse.message + teamsResponse.numberOfTeams"
+  [showCancelButton]="false"
+  [openModal]="showPopup"
+  (modalEvent)="closeModal()">
+</app-pop-up>
 

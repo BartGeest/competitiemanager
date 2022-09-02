@@ -44,6 +44,10 @@ public class Team {
         this.owner = owner;
         this.sportName = sportName;
         this.canParticipate = Boolean.TRUE;
+        this.wonMatches = 0L;
+        this.tieMatches = 0L;
+        this.lostMatches = 0L;
+        this.cost = 0L;
     }
 
     public Long getId() {

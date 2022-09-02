@@ -8,4 +8,6 @@ public interface Constants {
     public static final String DEFAULT_PAGE_SIZE = "20";
 
     public static final int MAX_PAGE_SIZE = 50;
+
+    public static final int ALLOWED_TEAMS_PER_SPORT_PER_USER = 8;
 }

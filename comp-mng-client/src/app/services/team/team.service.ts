@@ -16,7 +16,8 @@ export class TeamService {
     return this.http.get<TeamsResponse>(this.url.getTeamsOverviewUrl + sportname);
   }
 
-  createTeam(name: string, sportname: string): Observable<TeamCreationResponse> {
-    return this.http.post<TeamCreationResponse>(this.url.getTeamsCreationUrl, {name, sportname});
+  createTeam(sportname: string, teams: string[]): Observable<TeamCreationResponse> {
+    console.log(sportname);
+    return this.http.post<TeamCreationResponse>(this.url.getTeamsCreationUrl, {sportname, teams});
   }
 }

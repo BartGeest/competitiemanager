@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {UntypedFormArray, UntypedFormControl, UntypedFormGroup} from "@angular/forms";
+import {FormControl, FormRecord} from "@angular/forms";
 import {sportsDict} from "../../../model/domain/SportsDictionary";
+import {TeamService} from "../../../services/team/team.service";
+import {TeamCreationResponse} from "../../../model/team/TeamCreationResponse";
 
 @Component({
   selector: 'app-team-creation',
@@ -9,59 +11,57 @@ import {sportsDict} from "../../../model/domain/SportsDictionary";
 })
 export class TeamCreationComponent implements OnInit {
 
-  creationForm: UntypedFormGroup;
   dropdownChoices: string[];
+  selectedSport: string;
 
-  constructor() {
+  sportInputs: FormRecord<FormControl<string>>;
+  formKeys = ['0'];
+  inputCount = 0;
+
+  teamsResponse: TeamCreationResponse = {createdTeams: [], message: '', numberOfTeams: 0};
+  showPopup: boolean = false;
+
+  constructor(private teamService: TeamService) {
     this.dropdownChoices = Object.keys(sportsDict);
-
-    //TODO: refactor want dit slaat nergens op
-
-    this.creationForm = new UntypedFormGroup({
-      teams: new UntypedFormArray([
-        new UntypedFormGroup({
-          sport: new UntypedFormControl(''),
-          name: new UntypedFormControl('')
-        })
-      ])
-    });
+    this.selectedSport = sportsDict[this.dropdownChoices[0]];
+    this.sportInputs = new FormRecord<FormControl<string>>({});
+    this.sportInputs.addControl(this.formKeys[this.inputCount], new FormControl<string>('', {nonNullable: true}));
   }
 
-  ngOnInit(): void {
-    //TODO: call naar back-end - service maken
+  ngOnInit(): void { }
+
+  changeSport(sport: string): void {
+    this.selectedSport = sportsDict[sport];
   }
 
-  get teams(): UntypedFormArray {
-    return this.creationForm.get('teams') as UntypedFormArray;
+  addTeamInput(): void {
+    this.inputCount++;
+    let num = this.inputCount.toString();
+    this.formKeys.push(num);
+    this.sportInputs.addControl(this.formKeys[this.inputCount], new FormControl<string>('', {nonNullable: true}));
   }
 
-  get teamsSize(): number {
-    let formArray = this.creationForm.get('teams') as UntypedFormArray;
-    return formArray.length;
-  }
-
-  addTeamInput() {
-    if (this.teamsSize < 8) {
-      this.teams.push(
-        new UntypedFormGroup({
-          name: new UntypedFormControl('')
-        })
-      );
-    }
-  }
-
-  removeTeamInput() {
-    this.teams.controls.pop();
+  removeTeamInput(): void {
+    this.sportInputs.removeControl(this.formKeys[this.inputCount]);
+    this.formKeys.pop();
+    this.inputCount--;
   }
 
   submitTeams(): void {
-    console.log('Inside submitTeams');
+    let teams: string[] = [];
 
-    console.log('teams FormArray', this.teams);
+    for (let i = 0; i <= this.inputCount; i++) {
+      teams.push(this.sportInputs.get(this.formKeys[i])?.value);
+    }
 
-    console.log(this.creationForm);
-    //TODO: de form controls omzetten naar een ander object?
+    this.teamService.createTeam(this.selectedSport, teams)
+      .subscribe((teamResponse) => {
+        this.teamsResponse = teamResponse;
+        this.showPopup = true;
+      });
+  }
 
-    //TODO: team service aanroepen voor post naar back-end
+  closeModal(): void {
+    this.showPopup = false;
   }
 }
