@@ -7,7 +7,10 @@ export const environment = {
   url: {
     auth: 'http://localhost:8080/api/auth/login',
     register: 'http://localhost:8080/api/auth/register', //TODO: deze url wijzigen naar nog te maken juiste
-    competition: 'http://localhost:8080/api/competition/get_competitions/',
+    competition: {
+      retrieve: 'http://localhost:8080/api/competition/get_competitions/',
+      participate: 'http://localhost:8080/api/competition/participate'
+    },
     team: {
       overview: 'http://localhost:8080/api/team/get/teams/',
       creation: 'http://localhost:8080/api/team/create'

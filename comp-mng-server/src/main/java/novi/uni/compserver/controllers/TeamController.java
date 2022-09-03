@@ -45,7 +45,10 @@ public class TeamController {
 
         TeamCreationResponse response = new TeamCreationResponse(
                 "Het aantal teams wat je hebt aangemaakt: ",
-                teamService.create(noviEmployeePrincipal.getId(), request));
+                teamService.create(
+                        noviEmployeePrincipal.getId(),
+                        request.getSportName(),
+                        request.getTeams()));
 
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }

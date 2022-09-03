@@ -2,13 +2,16 @@
   <h3 class="modal-title">{{modalTitle}}</h3>
   <div class="modal-body">
     <p>{{modalMessage}}</p>
+    <clr-select-container>
+      <select #chosen clrSelect name="options" (change)="selectionChange(chosen.value)">
+        <option *ngFor="let item of selections;">{{item}}</option>
+      </select>
+    </clr-select-container>
   </div>
 
-<!--  TODO: dropdown voor competities en forecast die dan wordt meegestuurd ofzo-->
-
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline" *ngIf="showCancelButton" (click)="onModalClick()">{{footerCancelButtonLabel}}</button>
-    <button type="button" class="btn btn-primary" (click)="onModalClick()">{{footerActionButtonLabel}}</button>
+    <button type="button" class="btn btn-outline" *ngIf="showCancelButton" (click)="onCancelClick()">{{footerCancelButtonLabel}}</button>
+    <button type="button" class="btn btn-primary" (click)="onActionClick()">{{footerActionButtonLabel}}</button>
   </div>
 
 </clr-modal>

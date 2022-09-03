@@ -39,28 +39,28 @@ public class TeamService {
                 .collect(Collectors.toList());
     }
 
-    public List<String> create(Long id, TeamCreationRequest request) {
+    public List<String> create(Long id, SportName sportName, List<String> teams) {
 
         NoviEmployee noviEmployee = noviEmployeeRepository.findById(id)
                 .orElseThrow(() -> new NoviEmployeeNotFoundException("Kan geen medewerker vinden met id: " + id));
 
-        int teamAmount = teamRepository.findByOwnerIdAndSportName(id, request.getSportName()).size();
+        int teamAmount = teamRepository.findByOwnerIdAndSportName(id, sportName).size();
+        int teamsToCreateAmount = teams.size();
 
-        if (teamAmount + request.getTeams().size() > ALLOWED_TEAMS_PER_SPORT_PER_USER) {
-            int num = ALLOWED_TEAMS_PER_SPORT_PER_USER - request.getTeams().size();
-            if (num == 0) {
+        if (teamAmount + teamsToCreateAmount > ALLOWED_TEAMS_PER_SPORT_PER_USER) {
+            if (teamAmount == ALLOWED_TEAMS_PER_SPORT_PER_USER) {
                 throw new TeamCreationException("Je hebt al het maximaal aantal teams voor deze sport.");
             }
-            throw new TeamCreationException("Je mag nog maar " + (ALLOWED_TEAMS_PER_SPORT_PER_USER - request.getTeams().size()) + "aanmaken.");
+            throw new TeamCreationException("Je mag nog maar " + (ALLOWED_TEAMS_PER_SPORT_PER_USER - teamsToCreateAmount) + " aanmaken.");
         }
 
-        for (String name : request.getTeams()) {
-            Team team = new Team(name, noviEmployee, request.getSportName());
+        for (String name : teams) {
+            Team team = new Team(name, noviEmployee, sportName);
             noviEmployee.getTeams().add(team);
             teamRepository.save(team);
         }
 
-        return request.getTeams();
+        return teams;
     }
 
     //TODO: methode voor owner team swap

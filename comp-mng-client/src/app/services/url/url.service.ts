@@ -17,7 +17,11 @@ export class UrlService {
   }
 
   get getCompetitionsUrl(): string {
-    return environment.url.competition;
+    return environment.url.competition.retrieve;
+  }
+
+  get getCompetitionParticipationUrl(): string {
+    return environment.url.competition.participate;
   }
 
   get getTeamsOverviewUrl(): string {

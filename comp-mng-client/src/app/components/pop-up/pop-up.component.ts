@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {LABELS} from "../../constants/constants";
 
 @Component({
   selector: 'app-pop-up',
@@ -11,9 +12,9 @@ export class PopUpComponent implements OnInit {
 
   @Input() modalMessage = 'Het bericht wat getoond wordt.';
 
-  @Input() info: any;
+  @Input() selections: string[] = [];
 
-  @Input() footerCancelButtonLabel: string = 'Cancel';
+  @Input() footerCancelButtonLabel: string = LABELS.cancel;
 
   @Input() footerActionButtonLabel: string = 'Action';
 
@@ -21,15 +22,27 @@ export class PopUpComponent implements OnInit {
 
   @Input() openModal: boolean = false;
 
-  @Output() modalEvent = new EventEmitter<void>();
+  @Output() onActionEvent = new EventEmitter<string>();
+
+  @Output() onCancelEvent = new EventEmitter<void>();
+
+  selectedItem: string = '';
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onModalClick(...items: any) {
-    this.modalEvent.emit();
+  onActionClick(): void {
+    this.onActionEvent.emit(this.selectedItem);
+  }
+
+  onCancelClick(): void {
+    this.onCancelEvent.emit();
+  }
+
+  selectionChange(item: string): void {
+    this.selectedItem = item;
   }
 
 }
