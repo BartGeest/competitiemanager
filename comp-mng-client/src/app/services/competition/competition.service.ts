@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {UrlService} from "../url/url.service";
 import {Observable} from "rxjs";
 import {CompetitionResponse} from "../../model/competition/CompetitionResponse";
+import {ParticipationResponse} from "../../model/competition/ParticipationResponse";
 
 @Injectable({
   providedIn: 'root'
@@ -13,5 +14,9 @@ export class CompetitionService {
 
   getCompetitionsBySport(sport: string = 'FOOTBALL') : Observable<CompetitionResponse> {
     return this.http.get<CompetitionResponse>(this.url.getCompetitionsUrl + sport);
+  }
+
+  addTeamToCompetition(competitionId: number, teamId: number) : Observable<ParticipationResponse> {
+    return this.http.post<ParticipationResponse>(this.url.getCompetitionParticipationUrl, {competitionId, teamId});
   }
 }

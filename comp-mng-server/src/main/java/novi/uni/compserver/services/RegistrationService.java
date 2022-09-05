@@ -31,13 +31,14 @@ public class RegistrationService {
     public ApiResponse isEmployeeCreated(String username) {
 
         if (noviEmployeeRepository.existsByUsername(username)) {
+            //TODO: exception throwen (bijv UserExistingException)
             return new ApiResponse("Novimederker bestaat al");
         }
 
         NoviEmployee newEmployee = new NoviEmployee(username, passwordEncoder.encode(tempPass));
 
         Role employeeRole = roleRepository.findByRolename(RoleName.ROLE_EMPLOYEE)
-                .orElseThrow(() -> new RoleNotFoundException("Rolename EMPLOYEE kan niet gevonden worden"));
+                .orElseThrow(() -> new RoleNotFoundException("Rolnaam EMPLOYEE kan niet gevonden worden"));
 
         newEmployee.setRoleSet(Collections.singleton(employeeRole));
 

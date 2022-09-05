@@ -1,5 +1,13 @@
 export const ACCESS_TOKEN: string = 'accessToken';
 
+export const LABELS = {
+  action: {
+    ok: 'Ok',
+    add: 'Add',
+  },
+  cancel: 'Cancel'
+}
+
 export const TITLES = {
   dashboard: {
     user: {
@@ -33,6 +41,10 @@ export const TITLES = {
     teams: 'Teams-uitleg',
     forecast: 'Voorspellingen-uitleg',
     market: 'Markt-uitleg'
+  },
+
+  popup: {
+    participate: 'Meedoen'
   }
 }
 
@@ -60,5 +72,8 @@ export const TEXTS = {
     teams: 'Het aanmaken van teams en hoe ze werken.',
     forecast: 'Welke soorten er zijn en hoe je een voorspelling doet.',
     market: 'Kopen, verkopen, ruilen, het kan allemaal!'
+  },
+  popup: {
+    participate: 'Kies een team om mee te laten doen',
   }
 }

@@ -1,16 +1,20 @@
 <h1 class="text-center">Overzicht Competities</h1>
 <div class="divide-height-small"></div>
 <app-sports-tab
-  (sportNameEmitter)="retrieveCompetitions($event)">
+  (sportNameEmitter)="changeSport($event)">
 </app-sports-tab>
 <div class="divide-height-small"></div>
 <app-interactive-table
-  (eventEmitter)="onRowClick()"
+  (eventEmitter)="onRowClick($event)"
   [isRowClickable]="true"
   [columns]="comp_columns"
   [rows]="competitions">
 </app-interactive-table>
 <app-pop-up
-  (modalEvent)="navToCompParticipate()"
+  [modalTitle]="popupTitle"
+  [modalMessage]="popupText"
+  (onActionEvent)="handleAddition($event)"
+  [selections]="teamSelection"
+  [footerActionButtonLabel]="popupAbl"
   [openModal]="isRowClicked">
 </app-pop-up>

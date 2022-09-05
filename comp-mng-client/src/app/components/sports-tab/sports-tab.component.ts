@@ -1,13 +1,12 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {sportsDict} from "../../model/domain/SportsDictionary";
-
 
 @Component({
   selector: 'app-sports-tab',
   templateUrl: './sports-tab.component.html',
   styleUrls: ['./sports-tab.component.css']
 })
-export class SportsTabComponent implements OnInit {
+export class SportsTabComponent {
 
   sport_names: string[];
 
@@ -15,9 +14,6 @@ export class SportsTabComponent implements OnInit {
 
   constructor() {
     this.sport_names = Object.keys(sportsDict);
-  }
-
-  ngOnInit(): void {
   }
 
   clickedSport(sportname: string) {

@@ -13,7 +13,7 @@ export class InteractiveTableComponent implements OnInit {
 
   @Input() isRowClickable: boolean = false;
 
-  @Output() eventEmitter = new EventEmitter<void>();
+  @Output() eventEmitter = new EventEmitter<any>();
 
   objectValues = Object.values;
 
@@ -24,8 +24,7 @@ export class InteractiveTableComponent implements OnInit {
   clickedRow(row?: any) {
 
     if (this.isRowClickable) {
-      //TODO: row data meegeven (nodig voor back-end call om data op te halen in volgende scherm?)
-      this.eventEmitter.emit();
+      this.eventEmitter.emit(row);
     }
   }
 

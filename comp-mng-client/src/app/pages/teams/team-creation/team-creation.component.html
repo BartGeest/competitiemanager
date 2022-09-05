@@ -25,16 +25,9 @@
         </cds-icon-button>
       </div>
       <div class="content-area">
-        <button type="submit" class="btn btn-primary">Aanmaken</button>
+        <button type="submit" [disabled]="!sportInputs.valid" class="btn btn-primary">Aanmaken</button>
       </div>
     </div>
   </form>
 </div>
-<app-pop-up
-  modalTitle="Succes"
-  [modalMessage]="teamsResponse.message + teamsResponse.numberOfTeams"
-  [showCancelButton]="false"
-  [openModal]="showPopup"
-  (modalEvent)="closeModal()">
-</app-pop-up>
 

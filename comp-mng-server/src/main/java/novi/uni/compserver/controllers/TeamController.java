@@ -30,7 +30,7 @@ public class TeamController {
             @PathVariable SportName sportName) {
 
         TeamsResponse response = new TeamsResponse(
-                teamService.getTeams(noviEmployeePrincipal.getId(), sportName));
+                teamService.getTeamsThatCanPlay(noviEmployeePrincipal.getId(), sportName));
 
         return ResponseEntity.ok(response);
     }
@@ -45,8 +45,22 @@ public class TeamController {
 
         TeamCreationResponse response = new TeamCreationResponse(
                 "Het aantal teams wat je hebt aangemaakt: ",
-                teamService.create(noviEmployeePrincipal.getId(), request));
+                teamService.create(
+                        noviEmployeePrincipal.getId(),
+                        request.getSportName(),
+                        request.getTeams()));
 
         return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/check/{name}")
+    @PreAuthorize("hasRole('EMPLOYEE')")
+    public ResponseEntity<?> checkTeamName(
+            @CurrentNoviEmployee NoviEmployeePrincipal noviEmployeePrincipal,
+            @PathVariable String name) {
+
+        Boolean nameTaken = teamService.isNameTaken(name);
+
+        return ResponseEntity.ok(nameTaken);
     }
 }
