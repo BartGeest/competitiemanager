@@ -31,4 +31,8 @@ export class UrlService {
   get getTeamsCreationUrl(): string {
     return environment.url.team.creation;
   }
+
+  get getTeamNameCheckUrl(): string {
+    return environment.url.team.nameCheck;
+  }
 }

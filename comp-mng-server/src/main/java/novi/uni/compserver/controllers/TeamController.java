@@ -30,7 +30,7 @@ public class TeamController {
             @PathVariable SportName sportName) {
 
         TeamsResponse response = new TeamsResponse(
-                teamService.getTeams(noviEmployeePrincipal.getId(), sportName));
+                teamService.getTeamsThatCanPlay(noviEmployeePrincipal.getId(), sportName));
 
         return ResponseEntity.ok(response);
     }
@@ -51,5 +51,16 @@ public class TeamController {
                         request.getTeams()));
 
         return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/check/{name}")
+    @PreAuthorize("hasRole('EMPLOYEE')")
+    public ResponseEntity<?> checkTeamName(
+            @CurrentNoviEmployee NoviEmployeePrincipal noviEmployeePrincipal,
+            @PathVariable String name) {
+
+        Boolean nameTaken = teamService.isNameTaken(name);
+
+        return ResponseEntity.ok(nameTaken);
     }
 }

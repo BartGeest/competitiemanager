@@ -28,6 +28,8 @@ public class ParticipationFacade {
                 .orElseThrow(() -> new TeamNotFoundException("Kon geen team vinden met id: " + teamId));
 
         competition.getCompetitors().add(team);
+        team.setCanParticipate(false);
+        teamRepository.save(team);
         competitionRepository.save(competition);
 
         return new ParticipationDTO(competition.getName(), team.getName());

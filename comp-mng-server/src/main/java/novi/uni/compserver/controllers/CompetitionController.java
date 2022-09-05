@@ -52,7 +52,9 @@ public class CompetitionController {
                         participationRequest.getCompetitionId(),
                         participationRequest.getTeamId()));
 
-        return ResponseEntity.ok(participationResponse);
+        System.out.println(participationResponse);
+
+        return new ResponseEntity<>(participationResponse, HttpStatus.OK);
     }
 
     @PostMapping("/create")

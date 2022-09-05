@@ -13,7 +13,8 @@ export const environment = {
     },
     team: {
       overview: 'http://localhost:8080/api/team/get/teams/',
-      creation: 'http://localhost:8080/api/team/create'
+      creation: 'http://localhost:8080/api/team/create',
+      nameCheck: 'http://localhost:8080/api/team/check/'
     }
     //TODO: de andere endpoints toevoegen
   },

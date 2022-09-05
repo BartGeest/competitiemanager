@@ -6,7 +6,7 @@ import {CompetitionService} from "../../../services/competition/competition.serv
 import {Team} from "../../../model/team/Team";
 import {TeamService} from "../../../services/team/team.service";
 import {sportsDict} from "../../../model/domain/SportsDictionary";
-import {LABELS, TITLES} from "../../../constants/constants";
+import {LABELS, TEXTS, TITLES} from "../../../constants/constants";
 import {ToastrService} from "ngx-toastr";
 
 @Component({
@@ -25,7 +25,7 @@ export class CompetitionOverviewComponent implements OnInit {
   isRowClicked: boolean = false;
 
   popupTitle: string = TITLES.popup.participate;
-  popupText: string = TITLES.popup.participate;
+  popupText: string = TEXTS.popup.participate;
   popupAbl: string = LABELS.action.add;
 
   competitions: Competition[] = [];
@@ -82,12 +82,12 @@ export class CompetitionOverviewComponent implements OnInit {
     let competitionId = this.selectedCompetition?.id;
 
     if (!teamId) {
-      this.toastr.error('Het team id is leeg, probeer het opnieuw');
+      this.toastr.error('Er is geen team gekozen', 'Error');
       return;
     }
 
     if (!competitionId) {
-      this.toastr.error("Het competitie id is leeg, probeer het opnieuw");
+      this.toastr.error('Er is iets fout gegaan, probeer het nog eens', 'Error');
       return;
     }
 
@@ -96,12 +96,13 @@ export class CompetitionOverviewComponent implements OnInit {
 
     this.compService.addTeamToCompetition(competitionId, teamId)
       .subscribe((particpationResponse) => {
+        console.log(particpationResponse);
         this.toggleRowClicked();
         this.toastr.success(
-          'Jouw team: '
-          + particpationResponse.participation.teamName
-          + ' is toegoevoegd aan competitie: '
-          + particpationResponse.participation.competitionName)
+          'Jouw team '
+          + particpationResponse.participationDTO.teamName
+          + ' is toegoevoegd aan competitie '
+          + particpationResponse.participationDTO.competitionName)
           .onHidden.subscribe(() => {
             this.router.navigate([this.path.getCompetitionParticipationPath], {relativeTo: this.route});
         });

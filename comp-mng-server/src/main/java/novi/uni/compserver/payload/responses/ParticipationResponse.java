@@ -6,8 +6,8 @@ public class ParticipationResponse {
 
     private ParticipationDTO participation;
 
-    public ParticipationResponse(ParticipationDTO participationDTO) {
-        this.participation = participationDTO;
+    public ParticipationResponse(ParticipationDTO participation) {
+        this.participation = participation;
     }
 
     public ParticipationDTO getParticipationDTO() {

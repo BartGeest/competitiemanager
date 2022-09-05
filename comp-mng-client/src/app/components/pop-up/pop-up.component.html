@@ -2,8 +2,9 @@
   <h3 class="modal-title">{{modalTitle}}</h3>
   <div class="modal-body">
     <p>{{modalMessage}}</p>
-    <clr-select-container>
+    <clr-select-container *ngIf="selections.length > 0">
       <select #chosen clrSelect name="options" (change)="selectionChange(chosen.value)">
+        <option></option>
         <option *ngFor="let item of selections;">{{item}}</option>
       </select>
     </clr-select-container>

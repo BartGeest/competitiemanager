@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {LABELS} from "../../constants/constants";
 
 @Component({
@@ -31,6 +31,7 @@ export class PopUpComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.selectedItem = this.selections[0];
   }
 
   onActionClick(): void {

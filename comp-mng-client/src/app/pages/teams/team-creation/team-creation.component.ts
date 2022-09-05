@@ -1,8 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormRecord} from "@angular/forms";
+import {FormControl, FormRecord, Validators} from "@angular/forms";
 import {sportsDict} from "../../../model/domain/SportsDictionary";
 import {TeamService} from "../../../services/team/team.service";
 import {TeamCreationResponse} from "../../../model/team/TeamCreationResponse";
+import {ToastrService} from "ngx-toastr";
+import {nameTakenValidator} from "../../../validators/NameTakenValidator";
 
 @Component({
   selector: 'app-team-creation',
@@ -14,18 +16,17 @@ export class TeamCreationComponent implements OnInit {
   dropdownChoices: string[];
   selectedSport: string;
 
-  sportInputs: FormRecord<FormControl<string>>;
+  sportInputs: FormRecord<FormControl<string | null>>;
   formKeys = ['0'];
   inputCount = 0;
 
   teamsResponse: TeamCreationResponse = {createdTeams: [], message: '', numberOfTeams: 0};
-  showPopup: boolean = false;
 
-  constructor(private teamService: TeamService) {
+  constructor(private teamService: TeamService, private toastr: ToastrService) {
     this.dropdownChoices = Object.keys(sportsDict);
     this.selectedSport = sportsDict[this.dropdownChoices[0]];
     this.sportInputs = new FormRecord<FormControl<string>>({});
-    this.sportInputs.addControl(this.formKeys[this.inputCount], new FormControl<string>('', {nonNullable: true}));
+    this.sportInputs.addControl(this.formKeys[this.inputCount], new FormControl<string>('', Validators.required, nameTakenValidator(this.teamService)));
   }
 
   //TODO: call naar de back-end om te checken of de naam van het team al bestaat in de database
@@ -42,7 +43,7 @@ export class TeamCreationComponent implements OnInit {
     this.inputCount++;
     let num = this.inputCount.toString();
     this.formKeys.push(num);
-    this.sportInputs.addControl(this.formKeys[this.inputCount], new FormControl<string>('', {nonNullable: true}));
+    this.sportInputs.addControl(this.formKeys[this.inputCount], new FormControl<string>('', Validators.required, nameTakenValidator(this.teamService)));
   }
 
   removeTeamInput(): void {
@@ -61,11 +62,7 @@ export class TeamCreationComponent implements OnInit {
     this.teamService.createTeam(this.selectedSport, teams)
       .subscribe((teamResponse) => {
         this.teamsResponse = teamResponse;
-        this.showPopup = true;
+        this.toastr.success('Je team(s) is (zijn) aangemaakt!', 'Succes');
       });
-  }
-
-  closeModal(): void {
-    this.showPopup = false;
   }
 }

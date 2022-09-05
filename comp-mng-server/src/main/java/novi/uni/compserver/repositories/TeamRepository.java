@@ -14,5 +14,9 @@ public interface TeamRepository extends JpaRepository<Team, Long> {
 
     List<Team> findByOwnerIdAndSportName(Long id, SportName sportName);
 
+    List<Team> findByOwnerIdAndSportNameAndAndCanParticipateIsTrue(Long id, SportName sportName);
+
+    Boolean existsByName(String name);
+
     Optional<Team> findByOwnerAndName(NoviEmployee owner, String name);
 }
