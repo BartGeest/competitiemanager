@@ -6,17 +6,18 @@ export const environment = {
   production: false,
   url: {
     auth: 'http://localhost:8080/api/auth/login',
-    register: 'http://localhost:8080/api/auth/register', //TODO: deze url wijzigen naar nog te maken juiste
+    register: 'http://localhost:8080/api/auth/register',
     competition: {
       retrieve: 'http://localhost:8080/api/competition/get_competitions/',
-      participate: 'http://localhost:8080/api/competition/participate'
+      participate: 'http://localhost:8080/api/competition/participate',
+      single: 'http://localhost:8080/api/competition/get_single/'
     },
     team: {
       overview: 'http://localhost:8080/api/team/get/teams/',
+      playable: 'http://localhost:8080/api/team/get/playable/',
       creation: 'http://localhost:8080/api/team/create',
       nameCheck: 'http://localhost:8080/api/team/check/'
     }
-    //TODO: de andere endpoints toevoegen
   },
   path: {
     home: '',
@@ -57,7 +58,6 @@ export const environment = {
     register: '/registreren',
     delete: '/verwijderen',
     logout: ''
-    //TODO: de andere client paths toevoegen/aanpassen
   }
 };
 

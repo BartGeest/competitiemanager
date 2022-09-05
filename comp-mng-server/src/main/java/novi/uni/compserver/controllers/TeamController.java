@@ -30,6 +30,18 @@ public class TeamController {
             @PathVariable SportName sportName) {
 
         TeamsResponse response = new TeamsResponse(
+                teamService.getAllTeamsBySport(noviEmployeePrincipal.getId(), sportName));
+
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/get/playable/{sportName}")
+    @PreAuthorize("hasRole('EMPLOYEE')")
+    public ResponseEntity<?> getPlayableTeams(
+            @CurrentNoviEmployee NoviEmployeePrincipal noviEmployeePrincipal,
+            @PathVariable SportName sportName) {
+
+        TeamsResponse response = new TeamsResponse(
                 teamService.getTeamsThatCanPlay(noviEmployeePrincipal.getId(), sportName));
 
         return ResponseEntity.ok(response);

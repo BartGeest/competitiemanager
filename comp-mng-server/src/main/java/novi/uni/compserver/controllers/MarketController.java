@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/market")
 public class MarketController {
 
-    @GetMapping("/{sport}market") //TODO: gebasseerd op de sport in de url parameter de markt ophalen
+    @GetMapping("/{sport}market")
     @PreAuthorize("hasRole('EMPLOYEE')")
     public ResponseEntity<?> getSportMarket() {
-        return null; //TODO: methode verder uitwerken
+        return null;
     }
 }

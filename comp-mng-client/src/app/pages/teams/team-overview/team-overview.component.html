@@ -1,6 +1,8 @@
 <h1 class="text-center">Team overzicht</h1>
 <div class="divide-height-small"></div>
-<app-sports-tab></app-sports-tab>
+<app-sports-tab
+  (sportNameEmitter)="changeSport($event)">
+</app-sports-tab>
 <div class="divide-height-small"></div>
 
 <app-interactive-table

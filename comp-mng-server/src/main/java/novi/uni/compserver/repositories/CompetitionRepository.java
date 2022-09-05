@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface CompetitionRepository extends JpaRepository<Competition, Long> {
@@ -16,6 +17,9 @@ public interface CompetitionRepository extends JpaRepository<Competition, Long> 
     List<Competition> findAllBySportname(SportName sportName);
 
     List<Competition> findAllBySportnameAndIsClosedForParticipationIsFalse(SportName sportName);
+
+    @Override
+    Optional<Competition> findById(Long id);
 
     @Query("select c from Competition c where c.startsAt >= :currentTime")
     List<Competition> findAllWithStartTimeAfter(@Param("currentTime") Date currentTime);

@@ -33,9 +33,6 @@ public class Team {
 
     private Long cost;
 
-    //TODO: miss iets van team strength voor het (deels) bepalen van wedstrijduitkomst??
-    // Kan een arbitraire of baseline waarde zijn die veranderd op basis van wedstrijduitkomsten.
-
     public Team() {
     }
 

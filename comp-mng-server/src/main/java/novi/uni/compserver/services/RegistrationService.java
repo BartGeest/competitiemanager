@@ -31,7 +31,6 @@ public class RegistrationService {
     public ApiResponse isEmployeeCreated(String username) {
 
         if (noviEmployeeRepository.existsByUsername(username)) {
-            //TODO: exception throwen (bijv UserExistingException)
             return new ApiResponse("Novimederker bestaat al");
         }
 

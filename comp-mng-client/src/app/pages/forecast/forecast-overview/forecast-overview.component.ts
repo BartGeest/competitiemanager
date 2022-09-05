@@ -26,7 +26,7 @@ export class ForecastOverviewComponent implements OnInit {
   }
 
   randoMethod() {
-    //TODO: nog de methode anders noemen en iets anders doen dan alleen dit?
+
     this.isRowClicked = !this.isRowClicked;
   }
 

@@ -19,6 +19,3 @@ INSERT INTO competition(name, sportname, is_closed_for_participation)
            ('volleybal-divisie-2'   , 'VOLLEYBALL'  , false),
            ('volleybal-divisie-3'   , 'VOLLEYBALL'  , false);
 */
-
--- TODO: queries maken om de hele database op te zetten
--- TODO: alle bovenstaande en nieuwe queries bij het inleveren apart leveren en eenmalig uitvoeren in readme.md zetten

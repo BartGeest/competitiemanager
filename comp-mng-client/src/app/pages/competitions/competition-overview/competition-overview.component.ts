@@ -63,7 +63,7 @@ export class CompetitionOverviewComponent implements OnInit {
   }
 
   retrieveTeams(sportname: string): void {
-    this.teamService.getTeamsBySport(sportname)
+    this.teamService.getTeamsThatCanPlay(sportname)
       .subscribe((teamsResponse) => {
         this.teamSelection.splice(0);
         this.teams = teamsResponse.teams;
@@ -91,20 +91,17 @@ export class CompetitionOverviewComponent implements OnInit {
       return;
     }
 
-    //TODO: in de back-end ervoor zorgen dat de canParticipate van een team op false komt te staan
-    // teams die worden opgehaald moeten wel canParticipate op true hebben staan
-
     this.compService.addTeamToCompetition(competitionId, teamId)
       .subscribe((particpationResponse) => {
         console.log(particpationResponse);
         this.toggleRowClicked();
         this.toastr.success(
           'Jouw team '
-          + particpationResponse.participationDTO.teamName
+          + particpationResponse.teamName
           + ' is toegoevoegd aan competitie '
-          + particpationResponse.participationDTO.competitionName)
+          + particpationResponse.competitionName)
           .onHidden.subscribe(() => {
-            this.router.navigate([this.path.getCompetitionParticipationPath], {relativeTo: this.route});
+            this.router.navigate([this.path.getCompetitionParticipationPath, competitionId],{relativeTo: this.route});
         });
       });
   }

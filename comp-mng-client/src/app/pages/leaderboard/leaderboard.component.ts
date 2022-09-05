@@ -18,8 +18,5 @@ export class LeaderboardComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
-  //TODO: call naar back-end om goede info op te halen
-
+  ngOnInit(): void {  }
 }
