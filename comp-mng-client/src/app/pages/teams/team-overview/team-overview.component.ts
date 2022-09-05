@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {PathService} from "../../../services/path/path.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Team} from "../../../model/team/Team";
+import {TeamService} from "../../../services/team/team.service";
 
 @Component({
   selector: 'app-team-overview',
@@ -24,12 +25,24 @@ export class TeamOverviewComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private path: PathService) { }
+    private path: PathService,
+    private teamService: TeamService) { }
 
   ngOnInit(): void {
     this.route.data.subscribe( ({teamsResponse}) => {
       this.teams = teamsResponse.teams;
     });
+  }
+
+  changeSport(sportname: string): void {
+    this.retrieveTeams(sportname);
+  }
+
+  retrieveTeams(sportname: string): void {
+    this.teamService.getTeamsBySport(sportname)
+      .subscribe((teamsResponse) => {
+        this.teams = teamsResponse.teams;
+      });
   }
 
   navToTeamCreation(): void {

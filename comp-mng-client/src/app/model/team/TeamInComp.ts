@@ -1,7 +1,7 @@
-export interface Team {
+export interface TeamInComp {
   id: number;
   name: string;
-  available: boolean;
+  owner: string;
   wonMatches: number;
   tieMatches: number;
   lostMatches: number;

@@ -24,8 +24,16 @@ export class UrlService {
     return environment.url.competition.participate;
   }
 
+  get getSingleCompetitionUrl(): string {
+    return environment.url.competition.single;
+  }
+
   get getTeamsOverviewUrl(): string {
     return environment.url.team.overview;
+  }
+
+  get getPlayableTeamsUrl(): string {
+    return environment.url.team.playable;
   }
 
   get getTeamsCreationUrl(): string {

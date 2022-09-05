@@ -9,7 +9,6 @@ export class ForecastCreationComponent implements OnInit {
 
   isRowClicked: boolean = false;
 
-  //TODO: verplaatsen naar constants
   row_headers: string[] = [
     'Competitie',
     'Thuis',

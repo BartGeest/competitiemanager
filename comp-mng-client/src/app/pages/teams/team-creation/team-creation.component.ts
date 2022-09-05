@@ -29,10 +29,6 @@ export class TeamCreationComponent implements OnInit {
     this.sportInputs.addControl(this.formKeys[this.inputCount], new FormControl<string>('', Validators.required, nameTakenValidator(this.teamService)));
   }
 
-  //TODO: call naar de back-end om te checken of de naam van het team al bestaat in de database
-  // dan een icoon oid achter de input om te zeggen of het kan of niet
-  // wellicht een validator toevoegen aan de formcontrol
-
   ngOnInit(): void { }
 
   changeSport(sport: string): void {

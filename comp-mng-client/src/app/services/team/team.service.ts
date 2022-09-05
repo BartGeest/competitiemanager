@@ -16,6 +16,10 @@ export class TeamService {
     return this.http.get<TeamsResponse>(this.url.getTeamsOverviewUrl + sportname);
   }
 
+  getTeamsThatCanPlay(sportname: string = 'FOOTBALL'): Observable<TeamsResponse> {
+    return this.http.get<TeamsResponse>(this.url.getPlayableTeamsUrl + sportname);
+  }
+
   createTeam(sportname: string, teams: string[]): Observable<TeamCreationResponse> {
     return this.http.post<TeamCreationResponse>(this.url.getTeamsCreationUrl, {sportname, teams});
   }

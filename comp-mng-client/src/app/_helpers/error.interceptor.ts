@@ -17,7 +17,11 @@ export class ErrorInterceptor implements HttpInterceptor {
           if (error.error instanceof ErrorEvent) {
             this.toastr.error(error.error.message, 'Client Error');
           } else {
-            this.toastr.error(error.error, error.status.toString());
+            if (error.error instanceof Object) {
+              this.toastr.error(error.error.error, error.error.status.toString());
+            } else {
+              this.toastr.error(error.error, error.status.toString());
+            }
           }
           return throwError(() => error);
         })

@@ -1,12 +1,11 @@
 package novi.uni.compserver.model.dtos;
 
-public class TeamDTO {
-
+public class TeamInCompDTO {
     private Long id;
 
     private String name;
 
-    private Boolean available;
+    private String owner;
 
     private Long wonMatches;
 
@@ -30,12 +29,12 @@ public class TeamDTO {
         this.name = name;
     }
 
-    public Boolean getAvailable() {
-        return available;
+    public String getOwner() {
+        return owner;
     }
 
-    public void setAvailable(Boolean available) {
-        this.available = available;
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 
     public Long getWonMatches() {

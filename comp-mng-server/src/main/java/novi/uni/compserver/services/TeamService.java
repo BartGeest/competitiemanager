@@ -26,6 +26,13 @@ public class TeamService {
     @Autowired
     NoviEmployeeRepository noviEmployeeRepository;
 
+    public List<TeamDTO> getAllTeamsBySport(Long id, SportName sportName) {
+        return teamRepository.findByOwnerIdAndSportName(id, sportName)
+                .stream()
+                .map(TeamMapper::mapToTeamDto)
+                .collect(Collectors.toList());
+    }
+
     public List<TeamDTO> getTeamsThatCanPlay(Long id, SportName sportName) {
 
         return teamRepository.findByOwnerIdAndSportNameAndAndCanParticipateIsTrue(id, sportName)
@@ -61,8 +68,4 @@ public class TeamService {
     public Boolean isNameTaken(String name) {
         return teamRepository.existsByName(name);
     }
-
-    //TODO: methode voor owner team swap
-
-    //TODO: methode voor weghalen bij user (verkocht) en toevoegen aan user (gekocht)
 }
