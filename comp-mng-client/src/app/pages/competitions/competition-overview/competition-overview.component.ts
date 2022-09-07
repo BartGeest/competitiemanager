@@ -27,6 +27,7 @@ export class CompetitionOverviewComponent implements OnInit {
   popupTitle: string = TITLES.popup.participate;
   popupText: string = TEXTS.popup.participate;
   popupAbl: string = LABELS.action.add;
+  popupCbl: string = LABELS.cancel.standard;
 
   competitions: Competition[] = [];
   selectedCompetition: Competition | undefined;

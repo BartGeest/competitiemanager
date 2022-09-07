@@ -14,9 +14,9 @@ export class PopUpComponent implements OnInit {
 
   @Input() selections: string[] = [];
 
-  @Input() footerCancelButtonLabel: string = LABELS.cancel;
+  @Input() footerCancelButtonLabel: string = '';
 
-  @Input() footerActionButtonLabel: string = 'Action';
+  @Input() footerActionButtonLabel: string = '';
 
   @Input() showCancelButton = false;
 

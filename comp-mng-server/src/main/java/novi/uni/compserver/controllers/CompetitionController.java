@@ -41,7 +41,7 @@ public class CompetitionController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @GetMapping("/get_single")
+    @GetMapping("/get_single/{id}")
     @PreAuthorize("hasRole('EMPLOYEE')")
     public ResponseEntity<SingleCompetitionDTO> getSingleCompetition(
             @CurrentNoviEmployee NoviEmployeePrincipal noviEmployeePrincipal,

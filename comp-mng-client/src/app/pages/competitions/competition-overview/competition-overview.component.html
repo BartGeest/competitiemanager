@@ -14,7 +14,10 @@
   [modalTitle]="popupTitle"
   [modalMessage]="popupText"
   (onActionEvent)="handleAddition($event)"
+  (onCancelEvent)="toggleRowClicked()"
   [selections]="teamSelection"
   [footerActionButtonLabel]="popupAbl"
+  [footerCancelButtonLabel]="popupCbl"
+  [showCancelButton]="true"
   [openModal]="isRowClicked">
 </app-pop-up>

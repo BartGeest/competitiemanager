@@ -2,10 +2,16 @@ export const ACCESS_TOKEN: string = 'accessToken';
 
 export const LABELS = {
   action: {
+    standard: 'Action',
     ok: 'Ok',
     add: 'Add',
   },
-  cancel: 'Cancel'
+  cancel:{
+    standard: 'Cancel',
+    back: 'Back',
+    close: 'Close',
+
+  }
 }
 
 export const TITLES = {
