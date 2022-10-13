@@ -1,6 +1,8 @@
 # competitiemanager
 
 Eindopdracht voor Software in de Praktijk 3
+De requirements voor deze opdracht staan beschreven in SD3_Requirements.pdf
+Op deze requirements is de realisatie van de applicatie gebaseerd
 
 # vereiste software
 Java versie 8 (JDK: Eclipse Adoptium jdk-8.0.312.7-hotspot)<br />
