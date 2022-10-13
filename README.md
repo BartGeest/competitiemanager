@@ -1,7 +1,7 @@
 # competitiemanager
 
 ## Eindopdracht voor Software in de Praktijk 3
-De requirements voor deze opdracht staan beschreven in SD3_Requirements.pdf
+De requirements voor deze opdracht staan beschreven in SD3_Requirements.pdf<br />
 Op deze requirements is de realisatie van de applicatie gebaseerd
 
 # vereiste software
